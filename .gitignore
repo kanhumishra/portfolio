@@ -1,0 +1,9 @@
+# Node dependencies
+node_modules/
+
+# Production builds
+dist/
+
+# OS metadata
+.DS_Store
+Thumbs.db

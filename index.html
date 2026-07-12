@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="navy">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Kanhu Charan Mishra — Data Analyst &amp; Business Intelligence Developer</title>
+  <meta name="description" content="Portfolio of Kanhu Charan Mishra, Data Analyst and MCA Candidate specializing in SQL, Python, Power BI, computer vision quality control and predictive analysis.">
+  <meta name="keywords" content="Kanhu Charan Mishra, Data Analyst, Business Intelligence, Power BI, SQL, Python, PCB Defect Detection, Fakir Mohan University, Bhubaneswar, Odisha">
+  <meta name="author" content="Kanhu Charan Mishra">
+  
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Kanhu Charan Mishra — Data Analyst Portfolio">
+  <meta property="og:description" content="Turning raw data into decisions that hold up. Browse SQL, Python, and Power BI dashboards built by Kanhu Charan Mishra.">
+  <meta property="og:image" content="https://kanhumishra.github.io/assets/portfolio-preview.jpg">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@0.321.0/font/lucide.min.css">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Background Layer Grid & Interactive Particle Graph -->
+  <canvas id="bg-canvas"></canvas>
+  <div class="grid-overlay"></div>
+  <div class="orb-glow orb-1"></div>
+  <div class="orb-glow orb-2"></div>
+  <div class="orb-glow orb-3"></div>
+
+  <!-- HEADER -->
+  <header id="site-header">
+    <div class="container header-container">
+      <nav aria-label="Main Navigation">
+        <a href="#hero" class="nav-brand" id="navBrand">KANHU CH. MISHRA</a>
+        
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#about" class="nav-link"><span>01.</span>Profile</a></li>
+          <li><a href="#timeline" class="nav-link"><span>02.</span>Journey</a></li>
+          <li><a href="#skills" class="nav-link"><span>03.</span>Toolkit</a></li>
+          <li><a href="#projects" class="nav-link"><span>04.</span>Projects</a></li>
+          <li><a href="#achievements" class="nav-link"><span>05.</span>Highlights</a></li>
+          <li><a href="#contact" class="nav-link"><span>06.</span>Contact</a></li>
+        </ul>
+
+        <div class="header-actions">
+          <button class="theme-toggle" id="themeToggler" aria-label="Toggle visual theme" title="Switch Theme">
+            <!-- Icon is dynamically loaded via JS -->
+            <i class="lucide-moon"></i>
+          </button>
+          
+          <a href="mailto:mishrakaanhu76@gmail.com" class="btn btn-secondary btn-nav-cta" id="headerResumeBtn">
+            Hire
+          </a>
+
+          <button class="mobile-toggle" id="mobileMenuToggle" aria-expanded="false" aria-label="Toggle navigation menu">
+            &#x2630;
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <div class="hero-content">
+            <div class="hero-tagline">
+              <span> Data Analyst,Scientist · MCA Graduate</span>
+            </div>
+            
+            <h1 class="hero-title-main">
+              Turning raw data into<br>
+              <span>decisions that hold up.</span>
+            </h1>
+            
+            <p class="hero-desc">
+              I'm Kanhu Charan Mishra — I clean messy datasets, build robust SQL and Python pipelines, and design interactive dashboards that stakeholders use to make confident, data-driven decisions.
+            </p>
+            
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-primary" id="heroProjectsBtn">
+                Explore Projects <i class="lucide-arrow-right"></i>
+              </a>
+              <a href="#contact" class="btn btn-secondary" id="heroContactBtn">
+                Get In Touch
+              </a>
+            </div>
+
+            <div class="hero-stats">
+              <div class="hero-stat-item">
+                <span class="hero-stat-val">7.70<span>CGPA</span></span>
+                <span class="hero-stat-lbl">BCA Academic Record</span>
+              </div>
+              <div class="hero-stat-item">
+                <span class="hero-stat-val">6+<span>Classes</span></span>
+                <span class="hero-stat-lbl">PCB Defects Inspected</span>
+              </div>
+              <div class="hero-stat-item">
+                <span class="hero-stat-val">2<span>End-to-End</span></span>
+                <span class="hero-stat-lbl">BI Pipelines Shipped</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="terminal-mock">
+              <div class="terminal-header">
+                <div class="terminal-controls">
+                  <span class="terminal-dot red"></span>
+                  <span class="terminal-dot yellow"></span>
+                  <span class="terminal-dot green"></span>
+                </div>
+                <div class="terminal-tabs">
+                  <button class="terminal-tab active" data-file="retention_query.sql" aria-label="SQL retention query code">
+                    <i class="lucide-database" style="font-size: 11px;"></i> retention_query.sql
+                  </button>
+                  <button class="terminal-tab" data-file="defect_detection.py" aria-label="Python object detection code">
+                    <i class="lucide-terminal" style="font-size: 11px;"></i> defect_detection.py
+                  </button>
+                  <button class="terminal-tab" data-file="clean_data.py" aria-label="Python clean data code">
+                    <i class="lucide-binary" style="font-size: 11px;"></i> clean_data.py
+                  </button>
+                </div>
+                <div class="terminal-lang-indicator" style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">IDE</div>
+              </div>
+              <div class="terminal-body">
+                <div class="code-wrapper" style="border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1.25rem; margin-bottom: 1.25rem; max-height: 180px; overflow-y: auto;">
+                  <pre><code class="terminal-code" id="terminalCodeContent">SELECT customer_id, churn_flag, ltv FROM customer_activity;</code></pre>
+                </div>
+                <div class="console-wrapper">
+                  <div style="font-size: 0.72rem; color: var(--text-low); text-transform: uppercase; font-family: var(--font-mono); margin-bottom: 0.4rem;">Console Output</div>
+                  <pre style="color: var(--text-mid); font-size: 0.78rem;" class="terminal-console" id="terminalConsoleContent">Awaiting terminal execution...</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-num">01 / PROFILE</span>
+          <h2 class="section-title">About <span>Me</span></h2>
+          <p class="section-subtitle">A blend of computer application principles and data intelligence.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-bio reveal-on-scroll delay-100">
+            <p>
+              I am an <strong>MCA candidate </strong> with a deep passion for unlocking business value from messy, unstructured datasets. My academic foundations and practical application focus sit squarely at the intersection of <strong>Machine Learning, Data Analysis, and Predictive Modeling</strong>.
+            </p>
+            <p>
+              I specialize in handling the entire lifecycle of data: starting with robust extraction using complex <strong>SQL queries</strong>, going through cleaning and feature engineering in <strong>Python</strong>, and delivering findings via stakeholder-ready <strong>Power BI &amp; Tableau dashboards</strong>.
+            </p>
+            <p>
+              Whether it's building object detection systems for PCB quality inspections or modeling client behavior indicators to cut retention churn, I enjoy finding technical answers that translate directly into operational success.
+            </p>
+          </div>
+
+          <div class="about-stats reveal-on-scroll delay-200">
+            <div class="stat-box">
+              <div class="stat-box-val">7.02</div>
+              <div class="stat-box-lbl">Master of Computer Applications CGPA</div>
+            </div>
+            
+            <div class="stat-box">
+              <div class="stat-box-val">7.70</div>
+              <div class="stat-box-lbl">Bachelor of Computer Applications CGPA</div>
+            </div>
+
+            <div class="stat-box">
+              <div class="stat-box-val">India</div>
+              <div class="stat-box-lbl">Based in Bhubaneswar, Odisha</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOURNEY (TIMELINE) SECTION -->
+    <section id="timeline">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-num">02 / JOURNEY</span>
+          <h2 class="section-title">Experience &amp; <span>Education</span></h2>
+          <p class="section-subtitle">My practical milestones and academic credentials.</p>
+        </div>
+
+        <div class="timeline-toggle-wrapper reveal-on-scroll">
+          <div class="timeline-toggle-btn">
+            <button class="timeline-btn active" data-target="experience" id="btnTimelineExp">Applied Work</button>
+            <button class="timeline-btn" data-target="education" id="btnTimelineEdu">Academic Background</button>
+          </div>
+        </div>
+
+        <div class="timeline-container">
+          <div class="timeline-track"></div>
+          
+          <!-- Experience Items -->
+          <div class="timeline-item reveal-on-scroll" data-type="experience">
+            <span class="timeline-dot-indicator"><span class="timeline-dot-inner"></span></span>
+            <div class="timeline-date">2025 — 2026</div>
+            <h3 class="timeline-title">Computer Vision &amp; Analytics Developer</h3>
+            <div class="timeline-institution">AI-Powered PCB Defect Detection System <span>· Project Experience</span></div>
+            <ul class="timeline-details">
+              <li>Engineered a deep-learning quality control tool capable of identifying six custom defect classes on printed circuit boards.</li>
+              <li>Implemented computer vision pipelines in OpenCV, extracting contours, checking alignment, and optimizing template match matrices.</li>
+              <li>Developed a Python FastAPI backend integrated with a interactive Streamlit analytical reporting dashboard.</li>
+              <li>Streamlined automated quality control cycles, improving defect identification speed and logging anomalies to a local database.</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item reveal-on-scroll" data-type="experience">
+            <span class="timeline-dot-indicator"><span class="timeline-dot-inner"></span></span>
+            <div class="timeline-date">2025</div>
+            <h3 class="timeline-title">Data Analyst</h3>
+            <div class="timeline-institution">Customer Churn Analysis <span>· Project Experience</span></div>
+            <ul class="timeline-details">
+              <li>Spearheaded exploratory data analysis (EDA) on client behavior logs to find triggers indicating account cancellations.</li>
+              <li>Conducted robust data wrangling, missing-value imputation, outlier removal, and correlation analysis using Pandas and NumPy.</li>
+              <li>Built predictive classification models using Scikit-Learn to evaluate customer churn likelihood scores.</li>
+              <li>Published an interactive Power BI dashboard featuring KPI metrics, behavioral matrices, and demographic filter segmentation.</li>
+            </ul>
+          </div>
+
+          <!-- Education Items -->
+          <div class="timeline-item reveal-on-scroll" data-type="education">
+            <span class="timeline-dot-indicator"><span class="timeline-dot-inner"></span></span>
+            <div class="timeline-date">2024 — 2026 (Expected)</div>
+            <h3 class="timeline-title">Master of Computer Applications (MCA)</h3>
+            <div class="timeline-institution">Fakir Mohan University <span>· Balasore, Odisha, India</span></div>
+            <ul class="timeline-details">
+              <li>Current Cumulative Grade Point Average (CGPA): <strong>7.02 / 10</strong></li>
+              <li>Specialized modules in Advanced Data Mining, Relational Database Management, Data Structures, and Python.</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item reveal-on-scroll" data-type="education">
+            <span class="timeline-dot-indicator"><span class="timeline-dot-inner"></span></span>
+            <div class="timeline-date">2021 — 2024</div>
+            <h3 class="timeline-title">Bachelor of Computer Applications (BCA)</h3>
+            <div class="timeline-institution">Fakir Mohan University <span>· Balasore, Odisha, India</span></div>
+            <ul class="timeline-details">
+              <li>Graduation Cumulative Grade Point Average (CGPA): <strong>7.70 / 10</strong></li>
+              <li>Foundational modules in C/C++, Java, Relational Algebra, SQL Administration, Object-Oriented Analysis, and Statistics.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-num">03 / TOOLKIT</span>
+          <h2 class="section-title">Technical <span>Skills</span></h2>
+          <p class="section-subtitle">My core stack of database languages, analytics software, and frameworks.</p>
+        </div>
+
+        <div class="skills-grid">
+          
+          <div class="skill-category glass-panel reveal-on-scroll">
+            <div class="skill-header">
+              <i class="lucide-terminal"></i>
+              <h3>Programming Languages</h3>
+            </div>
+            <div class="skills-pills">
+              <div class="skill-pill"><span class="skill-dot"></span> Python</div>
+              <div class="skill-pill"><span class="skill-dot"></span> SQL (ANSI / Dialects)</div>
+            </div>
+          </div>
+
+          <div class="skill-category glass-panel reveal-on-scroll delay-100">
+            <div class="skill-header">
+              <i class="lucide-bar-chart-2"></i>
+              <h3>Data Analysis Methods</h3>
+            </div>
+            <div class="skills-pills">
+              <div class="skill-pill"><span class="skill-dot"></span> Data Cleaning</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Data Wrangling</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Exploratory Analysis (EDA)</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Statistical Testing</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Data Modeling</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Feature Engineering</div>
+            </div>
+          </div>
+
+          <div class="skill-category glass-panel reveal-on-scroll delay-200">
+            <div class="skill-header">
+              <i class="lucide-layout-dashboard"></i>
+              <h3>Business Intelligence</h3>
+            </div>
+            <div class="skills-pills">
+              <div class="skill-pill"><span class="skill-dot"></span> Microsoft Power BI</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Tableau Software</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Dashboard Architecture</div>
+              <div class="skill-pill"><span class="skill-dot"></span> KPI Reporting</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Custom Visualizations</div>
+            </div>
+          </div>
+
+          <div class="skill-category glass-panel reveal-on-scroll">
+            <div class="skill-header">
+              <i class="lucide-database"></i>
+              <h3>Relational SQL Mechanics</h3>
+            </div>
+            <div class="skills-pills">
+              <div class="skill-pill"><span class="skill-dot"></span> Inner &amp; Outer Joins</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Subqueries &amp; Co-relations</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Common Table Expressions (CTEs)</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Window Analytical Functions</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Groups &amp; Aggregations</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Query Performance Tuning</div>
+            </div>
+          </div>
+
+          <div class="skill-category glass-panel reveal-on-scroll delay-100">
+            <div class="skill-header">
+              <i class="lucide-settings"></i>
+              <h3>Databases &amp; Environments</h3>
+            </div>
+            <div class="skills-pills">
+              <div class="skill-pill"><span class="skill-dot"></span> MySQL Server</div>
+              <div class="skill-pill"><span class="skill-dot"></span> PostgreSQL</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Advanced MS Excel</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Power Query / M</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Jupyter Notebooks</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Git / GitHub Versioning</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Visual Studio Code</div>
+            </div>
+          </div>
+
+          <div class="skill-category glass-panel reveal-on-scroll delay-200">
+            <div class="skill-header">
+              <i class="lucide-cpu"></i>
+              <h3>Machine Learning</h3>
+            </div>
+            <div class="skills-pills">
+              <div class="skill-pill"><span class="skill-dot"></span> Linear &amp; Logistic Regression</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Classification Models</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Clustering Algorithms</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Predictive Analytics</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Hyperparameter Validation</div>
+              <div class="skill-pill"><span class="skill-dot"></span> Scikit-Learn Library</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-num">04 / SELECTED WORKS</span>
+          <h2 class="section-title">Featured <span>Projects</span></h2>
+          <p class="section-subtitle">Real-world applications of machine learning, analytics, and business intelligence.</p>
+        </div>
+
+        <div class="projects-filter-bar reveal-on-scroll">
+          <button class="filter-btn active" data-filter="all" id="btnFilterAll">All Categories</button>
+          <button class="filter-btn" data-filter="computer-vision" id="btnFilterCV">Computer Vision</button>
+          <button class="filter-btn" data-filter="business-intelligence" id="btnFilterBI">BI &amp; Analytics</button>
+        </div>
+
+        <div class="projects-grid">
+          
+          <!-- Project 1 -->
+          <div class="project-card glass-panel reveal-on-scroll" data-category="computer-vision" id="projPCB">
+            <div class="project-meta">
+              <span class="tag tag-primary"><i class="lucide-eye"></i> Computer Vision</span>
+              <div class="project-links-icons">
+                <a href="https://github.com/kanhumishra" target="_blank" rel="noopener" aria-label="View source code on GitHub" title="View Source Code" class="btn-icon">
+                  <i class="lucide-github"></i>
+                </a>
+              </div>
+            </div>
+            <h3 class="project-title">AI-Powered PCB Defect Detection System</h3>
+            <div class="project-stack">Python · OpenCV · PyTorch (YOLOv5) · FastAPI · Streamlit</div>
+            <ul class="project-description">
+              <li>Designed and trained a deep learning computer vision model to identify six unique PCB manufacturing defect classes.</li>
+              <li>Configured image preprocessing parameters to perform template matching, alignment correction, and edge contour calculations.</li>
+              <li>Built a FastAPI background engine to handle asynchronous video/image inference request structures.</li>
+              <li>Launched an interactive Streamlit UI reporting dashboard showcasing detection rates, anomalies, and confidence score distribution charts.</li>
+            </ul>
+            <div class="project-links">
+              <a href="https://github.com/kanhumishra/Smart-PCB-defect-detection-and-classification" target="_blank" rel="noopener" class="btn btn-secondary">
+                GitHub Repository <i class="lucide-external-link"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card glass-panel reveal-on-scroll delay-100" data-category="business-intelligence" id="projChurn">
+            <div class="project-meta">
+              <span class="tag tag-primary"><i class="lucide-bar-chart-3"></i> BI &amp; Analytics</span>
+              <div class="project-links-icons">
+                <a href="https://github.com/kanhumishra" target="_blank" rel="noopener" aria-label="View source code on GitHub" title="View Source Code" class="btn-icon">
+                  <i class="lucide-github"></i>
+                </a>
+              </div>
+            </div>
+            <h3 class="project-title">Customer Churn Analysis &amp; Dashboard</h3>
+            <div class="project-stack">Python · Pandas · Scikit-Learn · Microsoft Power BI</div>
+            <ul class="project-description">
+              <li>Processed user activation databases to structure historical churn retention patterns.</li>
+              <li>Identified critical KPIs, such as lifetime value (LTV), customer acquisition cost (CAC), usage frequencies, and correlation metrics.</li>
+              <li>Applied Scikit-Learn algorithms to build predictive classifier systems measuring user churn probabilities.</li>
+              <li>Engineered custom relational structures in Power BI, enabling multi-segment dashboard views filtering on demography, activity levels, and risk indicators.</li>
+            </ul>
+            <div class="project-links">
+              <a href="https://github.com/kanhumishra" target="_blank" rel="noopener" class="btn btn-secondary">
+                GitHub Repository <i class="lucide-external-link"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS SECTION -->
+    <section id="achievements">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-num">05 / HIGHLIGHTS</span>
+          <h2 class="section-title">Key <span>Achievements</span></h2>
+          <p class="section-subtitle">Visual summaries of my project and educational milestones.</p>
+        </div>
+
+        <div class="achievements-grid">
+          
+          <div class="ach-card glass-panel reveal-on-scroll">
+            <div class="ach-icon-box">
+              <i class="lucide-target"></i>
+            </div>
+            <h3 class="ach-title">6-Class Defect Engine</h3>
+            <p class="ach-desc">Successfully designed and deployed an end-to-end computer vision pipeline detecting six distinct PCB defects with high classification scores.</p>
+          </div>
+
+          <div class="ach-card glass-panel reveal-on-scroll delay-100">
+            <div class="ach-icon-box">
+              <i class="lucide-trending-up"></i>
+            </div>
+            <h3 class="ach-title">Full Analytics Delivery</h3>
+            <p class="ach-desc">Managed the customer churn pipeline from initial database deduplication through statistical engineering up to stakeholder dashboard reporting.</p>
+          </div>
+
+          <div class="ach-card glass-panel reveal-on-scroll delay-200">
+            <div class="ach-icon-box">
+              <i class="lucide-graduation-cap"></i>
+            </div>
+            <h3 class="ach-title">Consistent Academic Record</h3>
+            <p class="ach-desc">Achieved and maintained strong CGPAs across BCA (7.70) and MCA (7.02) at Fakir Mohan University while pursuing hands-on project work.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-num">06 / CONTACT</span>
+          <h2 class="section-title">Let's <span>Talk Data</span></h2>
+          <p class="section-subtitle">I'm open to Data Analyst, Business Intelligence, or analytics internships and roles.</p>
+        </div>
+
+        <div class="contact-grid">
+          
+          <div class="contact-info-list reveal-on-scroll">
+            <a href="mailto:mishrakaanhu76@gmail.com" class="contact-card" id="contactEmailCard">
+              <div class="contact-card-icon">
+                <i class="lucide-mail"></i>
+              </div>
+              <div class="contact-card-details">
+                <span class="contact-card-lbl">Email</span>
+                <span class="contact-card-val">mishrakaanhu76@gmail.com</span>
+              </div>
+            </a>
+
+            <a href="tel:+917848817963" class="contact-card" id="contactPhoneCard">
+              <div class="contact-card-icon">
+                <i class="lucide-phone"></i>
+              </div>
+              <div class="contact-card-details">
+                <span class="contact-card-lbl">Phone</span>
+                <span class="contact-card-val">+91 7848817963</span>
+              </div>
+            </a>
+
+            <a href="https://linkedin.com/in/kanhu2002" target="_blank" rel="noopener" class="contact-card" id="contactLinkedinCard">
+              <div class="contact-card-icon">
+                <i class="lucide-linkedin"></i>
+              </div>
+              <div class="contact-card-details">
+                <span class="contact-card-lbl">LinkedIn</span>
+                <span class="contact-card-val">linkedin.com/in/kanhu2002</span>
+              </div>
+            </a>
+
+            <a href="https://github.com/kanhumishra" target="_blank" rel="noopener" class="contact-card" id="contactGithubCard">
+              <div class="contact-card-icon">
+                <i class="lucide-github"></i>
+              </div>
+              <div class="contact-card-details">
+                <span class="contact-card-lbl">GitHub</span>
+                <span class="contact-card-val">github.com/kanhumishra</span>
+              </div>
+            </a>
+
+            <div class="contact-card" style="cursor: default;" id="contactLocationCard">
+              <div class="contact-card-icon">
+                <i class="lucide-map-pin"></i>
+              </div>
+              <div class="contact-card-details">
+                <span class="contact-card-lbl">Location</span>
+                <span class="contact-card-val">Bhubaneswar, Odisha, India</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-panel glass-panel reveal-on-scroll delay-100">
+            <h3 class="contact-form-title">Send a Message</h3>
+            <p class="contact-form-desc">I usually reply within 24 hours. Submit your details below to start a conversation.</p>
+            
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="formName" class="form-label">Full Name</label>
+                <input type="text" id="formName" class="form-input" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <label for="formEmail" class="form-label">Email Address</label>
+                <input type="email" id="formEmail" class="form-input" placeholder="name@company.com" required>
+              </div>
+              <div class="form-group">
+                <label for="formMessage" class="form-label">Message Content</label>
+                <textarea id="formMessage" class="form-input" placeholder="Describe the role or project details..." required></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;" id="formSubmitBtn">
+                Send Message <i class="lucide-send"></i>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="credit">Designed &amp; Developed for <span>Kanhu Charan Mishra</span></div>
+      <div style="font-size: 0.72rem; color: var(--text-low);">© 2026 Bhubaneswar, Odisha. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  
+  <!-- Add filter categories action to the page -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const projCards = document.querySelectorAll('.project-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          // Set active state on button
+          filterBtns.forEach(b => b.classList.remove('active'));
+          e.currentTarget.classList.add('active');
+
+          const category = e.currentTarget.getAttribute('data-filter');
+
+          // Filter projects
+          projCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(15px)';
+            
+            setTimeout(() => {
+              const cardCat = card.getAttribute('data-category');
+              if (category === 'all' || cardCat === category) {
+                card.style.display = 'flex';
+                setTimeout(() => {
+                  card.style.opacity = '1';
+                  card.style.transform = 'translateY(0)';
+                }, 50);
+              } else {
+                card.style.display = 'none';
+              }
+            }, 300);
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "kanhu-mishra-portfolio",
+  "version": "1.0.0",
+  "description": "Premium portfolio website of Kanhu Charan Mishra, Data Analyst",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "portfolio",
+    "data-analyst",
+    "python",
+    "sql"
+  ],
+  "author": "Kanhu Charan Mishra",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.2.0"
+  }
+}
