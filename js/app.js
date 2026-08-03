@@ -696,20 +696,6 @@ const projectModalData = {
         <li><strong>Power BI Dashboard (telco_customer.pbix):</strong> Formulated DAX measures and built interactive slicers isolating high-risk users (Churn_Score >= 80) to preserve monthly revenue.</li>
       </ul>
     `
-  },
-  churn: {
-    title: 'Customer Churn Risk Analysis & Power BI Architecture',
-    github: 'https://github.com/kanhumishra',
-    body: `
-      <h4><i class="lucide-line-chart"></i> System Overview & Machine Learning</h4>
-      <p>Built a predictive churn model and executive Power BI report quantifying customer lifetime value (LTV) and cancellation risk factors.</p>
-      
-      <h4 style="margin-top: 1rem;"><i class="lucide-settings"></i> Data Science Methods</h4>
-      <ul>
-        <li><strong>Python Scikit-Learn:</strong> Implemented Random Forest and Logistic Regression models achieving 84.6% accuracy.</li>
-        <li><strong>Power BI DAX:</strong> Modeled dynamic time-intelligence measures and contract risk slicers.</li>
-      </ul>
-    `
   }
 };
 
