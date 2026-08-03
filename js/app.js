@@ -1,24 +1,43 @@
-/* ==========================================
-   PORTFOLIO INTERACTIVE LOGIC
-   ========================================== */
+/* ==========================================================================
+   PORTFOLIO INTERACTIVE APPLICATION LOGIC — KANHU CHARAN MISHRA
+   ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize all components
+  initCursorGlow();
   initMobileMenu();
+  initHeaderScroll();
   initThemeToggle();
   initCanvasBackground();
   initTerminalMock();
+  initChartJSHub();
+  initProjectFilters();
+  initPcbSimulator();
   initTimelineToggle();
+  initCopyCards();
+  initModals();
   initScrollReveal();
   initContactForm();
 });
 
-/* ==========================================
-   1. MOBILE MENU PANEL
-   ========================================== */
+/* ==========================================================================
+   1. CUSTOM CURSOR GLOW FOLLOWER
+   ========================================================================== */
+function initCursorGlow() {
+  const glow = document.getElementById('cursor-glow');
+  if (!glow) return;
+
+  window.addEventListener('mousemove', (e) => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+  });
+}
+
+/* ==========================================================================
+   2. MOBILE MENU & HEADER SCROLL
+   ========================================================================== */
 function initMobileMenu() {
-  const toggle = document.querySelector('.mobile-toggle');
-  const menu = document.querySelector('.nav-menu');
+  const toggle = document.getElementById('mobileMenuToggle');
+  const menu = document.getElementById('navMenu');
   const links = document.querySelectorAll('.nav-link');
 
   if (!toggle || !menu) return;
@@ -26,31 +45,42 @@ function initMobileMenu() {
   toggle.addEventListener('click', () => {
     const isOpen = menu.classList.toggle('open');
     toggle.setAttribute('aria-expanded', isOpen);
-    toggle.innerHTML = isOpen ? '&#x2715;' : '&#x2630;'; // ✕ or ☰
+    toggle.innerHTML = isOpen ? '<i class="lucide-x"></i>' : '<i class="lucide-menu"></i>';
   });
 
   links.forEach(link => {
     link.addEventListener('click', () => {
       menu.classList.remove('open');
       toggle.setAttribute('aria-expanded', 'false');
-      toggle.innerHTML = '&#x2630;';
+      toggle.innerHTML = '<i class="lucide-menu"></i>';
     });
   });
 }
 
-/* ==========================================
-   2. THEME SWITCHER (NAVY & GOLD vs EMERALD)
-   ========================================== */
+function initHeaderScroll() {
+  const header = document.getElementById('site-header');
+  if (!header) return;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+}
+
+/* ==========================================================================
+   3. THEME TOGGLE (NAVY vs EMERALD)
+   ========================================================================== */
 function initThemeToggle() {
-  const themeToggleBtn = document.querySelector('.theme-toggle');
+  const themeToggleBtn = document.getElementById('themeToggler');
   if (!themeToggleBtn) return;
 
-  // Icons
-  const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>`;
-  const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`;
+  const sunIcon = `<i class="lucide-sun"></i>`;
+  const moonIcon = `<i class="lucide-moon"></i>`;
 
-  // Check saved theme
-  const savedTheme = localStorage.getItem('theme') || 'navy';
+  const savedTheme = localStorage.getItem('portfolio_theme') || 'navy';
   document.documentElement.setAttribute('data-theme', savedTheme);
   themeToggleBtn.innerHTML = savedTheme === 'emerald' ? sunIcon : moonIcon;
 
@@ -59,37 +89,29 @@ function initThemeToggle() {
     const newTheme = currentTheme === 'emerald' ? 'navy' : 'emerald';
     
     document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
+    localStorage.setItem('portfolio_theme', newTheme);
     themeToggleBtn.innerHTML = newTheme === 'emerald' ? sunIcon : moonIcon;
     
-    // Update canvas particle colors
-    if (window.updateCanvasColors) {
-      window.updateCanvasColors(newTheme);
-    }
+    if (window.updateCanvasColors) window.updateCanvasColors(newTheme);
+    if (window.updateChartTheme) window.updateChartTheme(newTheme);
   });
 }
 
-/* ==========================================
-   3. INTERACTIVE CANVAS DATA GRAPH
-   ========================================== */
+/* ==========================================================================
+   4. INTERACTIVE CANVAS PARTICLE GRAPH
+   ========================================================================== */
 function initCanvasBackground() {
   const canvas = document.getElementById('bg-canvas');
   if (!canvas) return;
 
   const ctx = canvas.getContext('2d');
-  let animationFrameId;
   let width = (canvas.width = window.innerWidth);
   let height = (canvas.height = window.innerHeight);
 
   const particles = [];
-  let particleCount = Math.min(60, Math.floor((width * height) / 25000));
+  let particleCount = Math.min(60, Math.floor((width * height) / 24000));
   
-  // Interactive mouse tracking
-  const mouse = {
-    x: null,
-    y: null,
-    radius: 120
-  };
+  const mouse = { x: null, y: null, radius: 140 };
 
   window.addEventListener('mousemove', (e) => {
     mouse.x = e.clientX;
@@ -101,60 +123,53 @@ function initCanvasBackground() {
     mouse.y = null;
   });
 
-  // Handle Resize
   window.addEventListener('resize', () => {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
-    particleCount = Math.min(60, Math.floor((width * height) / 25000));
+    particleCount = Math.min(60, Math.floor((width * height) / 24000));
     createParticles();
   });
 
-  // Color variables based on current theme
   let colors = {
     particle: 'rgba(201, 168, 96, 0.4)',
     line: 'rgba(201, 168, 96, 0.08)',
-    accent: 'rgba(6, 182, 212, 0.3)'
+    accent: 'rgba(6, 182, 212, 0.35)'
   };
 
   window.updateCanvasColors = function(theme) {
     if (theme === 'emerald') {
       colors.particle = 'rgba(52, 211, 153, 0.4)';
       colors.line = 'rgba(52, 211, 153, 0.08)';
-      colors.accent = 'rgba(56, 189, 248, 0.3)';
+      colors.accent = 'rgba(56, 189, 248, 0.35)';
     } else {
       colors.particle = 'rgba(201, 168, 96, 0.4)';
       colors.line = 'rgba(201, 168, 96, 0.08)';
-      colors.accent = 'rgba(6, 182, 212, 0.3)';
+      colors.accent = 'rgba(6, 182, 212, 0.35)';
     }
   };
 
-  // Run immediately for initial theme configuration
   const currentTheme = document.documentElement.getAttribute('data-theme');
   window.updateCanvasColors(currentTheme);
 
   class Particle {
-    constructor() {
-      this.reset();
-    }
+    constructor() { this.reset(); }
 
     reset() {
       this.x = Math.random() * width;
       this.y = Math.random() * height;
-      this.vx = (Math.random() - 0.5) * 0.4;
-      this.vy = (Math.random() - 0.5) * 0.4;
+      this.vx = (Math.random() - 0.5) * 0.45;
+      this.vy = (Math.random() - 0.5) * 0.45;
       this.radius = Math.random() * 2 + 1;
-      this.colorType = Math.random() > 0.85 ? 'accent' : 'particle';
+      this.colorType = Math.random() > 0.8 ? 'accent' : 'particle';
     }
 
     update() {
       this.x += this.vx;
       this.y += this.vy;
 
-      // Bounce on boundaries
       if (this.x < 0 || this.x > width) this.vx *= -1;
       if (this.y < 0 || this.y > height) this.vy *= -1;
 
-      // Mouse interactive push/pull
       if (mouse.x !== null && mouse.y !== null) {
         const dx = this.x - mouse.x;
         const dy = this.y - mouse.y;
@@ -162,9 +177,8 @@ function initCanvasBackground() {
         
         if (dist < mouse.radius) {
           const force = (mouse.radius - dist) / mouse.radius;
-          // Soft pull towards mouse to represent "connecting data nodes"
-          this.x -= (dx / dist) * force * 0.5;
-          this.y -= (dy / dist) * force * 0.5;
+          this.x -= (dx / dist) * force * 0.6;
+          this.y -= (dy / dist) * force * 0.6;
         }
       }
     }
@@ -191,13 +205,13 @@ function initCanvasBackground() {
         const dy = particles[i].y - particles[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        if (dist < 150) {
-          const alpha = (150 - dist) / 150 * 0.45;
+        if (dist < 140) {
+          const alpha = (140 - dist) / 140 * 0.4;
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
           ctx.strokeStyle = colors.line.replace('0.08', (alpha * 0.08).toFixed(3));
-          ctx.lineWidth = 0.6;
+          ctx.lineWidth = 0.65;
           ctx.stroke();
         }
       }
@@ -206,362 +220,587 @@ function initCanvasBackground() {
 
   function animate() {
     ctx.clearRect(0, 0, width, height);
-    
-    particles.forEach(p => {
-      p.update();
-      p.draw();
-    });
-    
+    particles.forEach(p => { p.update(); p.draw(); });
     connectParticles();
-    animationFrameId = requestAnimationFrame(animate);
+    requestAnimationFrame(animate);
   }
 
   createParticles();
   animate();
 }
 
-/* ==========================================
-   4. INTERACTIVE SQL / DATA CODE TERMINAL MOCK
-   ========================================== */
+/* ==========================================================================
+   5. HERO TERMINAL / CODE IDE MOCK
+   ========================================================================== */
 const terminalData = {
-  'retention_query.sql': {
-    code: `SELECT 
-    segment, 
-    COUNT(customer_id) AS total_customers, 
-    SUM(churn_flag) AS churned, 
-    ROUND(100.0 * SUM(churn_flag) / COUNT(customer_id), 2) || '%' AS churn_rate
-FROM customer_activity
-WHERE last_active > '2026-01-01'
-GROUP BY segment;`,
-    output: `Executing query retention_query.sql...
+  'growth_analytics.sql': {
+    code: `-- Telecom Customer Growth & High Risk Account Query
+WITH HighRiskAccounts AS (
+    SELECT 
+        CustomerID,
+        City,
+        Monthly_Charges,
+        Churn_Score,
+        CASE WHEN Churn_Score >= 80 THEN 'HIGH RISK' ELSE 'STABLE' END AS Risk_Category
+    FROM telco_customer_clean
+    WHERE Total_Charges > 500.00
+)
+SELECT City, COUNT(CustomerID) AS Total_High_Risk, SUM(Monthly_Charges) AS Revenue_At_Risk
+FROM HighRiskAccounts
+WHERE Risk_Category = 'HIGH RISK'
+GROUP BY City
+ORDER BY Revenue_At_Risk DESC;`,
+    output: `Executing T-SQL script [growth_analytics.sql]...
 
-| segment    | total_customers | churned | churn_rate |
-|------------|-----------------|---------|------------|
-| Enterprise | 1,420           | 85      | 5.99%      |
-| Mid-Market | 2,840           | 298     | 10.49%     |
-| SMB        | 5,120           | 839     | 16.39%     |
+| City          | Total_High_Risk | Revenue_At_Risk ($) |
+|---------------|-----------------|---------------------|
+| Los Angeles   | 142             | $12,480.50          |
+| San Diego     | 98              | $8,910.20           |
+| San Jose      | 76              | $6,740.00           |
+| San Francisco | 64              | $5,820.75           |
 
-Query finished in 0.048s. 3 rows affected.`
+Execution Complete: 4 rows returned in 0.038s. High risk flag isolated.`
   },
-  'defect_detection.py': {
+  'pcb_vision.py': {
     code: `import cv2
 import torch
-from pcb_analytics import CVEngine
+from fastapi import FastAPI
+from pcb_vision import YOLOv5Engine
 
-# Load customized YOLOv5 network
-cv_model = torch.hub.load('models/', 'custom', path='pcb_cv_v2.pt')
-img = cv2.imread('uploads/pcb_sample_049.jpg')
-findings = cv_model(img)
+app = FastAPI(title="PCB Defect Classifier")
+model = YOLOv5Engine(weights="best_model.pth")
 
-# Log defect metrics
-for index, item in enumerate(findings.xyxy[0]):
-    print(f"Defect Detected - Class: {int(item[5])}, Confidence: {item[4]:.2f}")`,
-    output: `Initializing PyTorch deep learning weights...
-Loading PCB model pcb_cv_v2.pt... Successfully loaded.
-Running inference on uploads/pcb_sample_049.jpg [1024x1024]...
-Inspection results:
-- Defect 01: Class 0 (Missing Hole), Conf: 94.2%, Box: [120, 240, 150, 270]
-- Defect 02: Class 2 (Short Circuit), Conf: 88.0%, Box: [450, 110, 485, 145]
-- Defect 03: Class 5 (Spurious Copper), Conf: 81.4%, Box: [890, 520, 930, 560]
+@app.post("/inspect")
+async def inspect_pcb(image_path: str):
+    image = cv2.imread(image_path)
+    detections = model.predict(image, conf_threshold=0.85)
+    return {"status": "SUCCESS", "anomalies_detected": len(detections), "results": detections}`,
+    output: `Running PyTorch YOLOv5 Inference API test...
 
-Result: REJECT. Flow metrics sent to database.`
+[MODEL] Model loaded: best_model.pth (CUDA GPU Acceleration)
+[INPUT] Image shape: (1080, 1920, 3)
+[RESULT] Found 1 Defect: 'Short Circuit' (Confidence: 0.984)
+[TIME] Inference Latency: 14.2 ms. Response 200 OK.`
   },
-  'clean_data.py': {
+  'churn_eda.py': {
     code: `import pandas as pd
-import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
 
-# Pipeline to clean churn sensor data
-df = pd.read_csv('raw_logs.csv')
-print(f"Original shape: {df.shape}")
+# Load cleaned telecom retention dataset
+df = pd.read_csv("data/processed/telco_customer_clean.csv")
 
-# Drop bad keys and impute null values
-df.drop_duplicates(subset=['log_id'], inplace=True)
-df['session_duration'].fillna(df['session_duration'].median(), inplace=True)
-df['page_views'] = np.clip(df['page_views'], 0, 100)
+X = df[['Tenure', 'Monthly_Charges', 'Total_Charges', 'Contract_Code']]
+y = df['Churn_Value']
 
-print(f"Cleaned dataset shape: {df.shape}")`,
-    output: `Running Python clean_data.py...
-[Logs] Reading dataset: raw_logs.csv
-[Logs] Deduplicating keys on 'log_id'... Cleaned 1,240 duplicates.
-[Logs] Imputing missing values in 'session_duration' with median (12.4 minutes).
-[Logs] Clipping outliers in 'page_views' column at percentile thresholds.
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+model = RandomForestClassifier(n_estimators=100)
+model.fit(X_train, y_train)
 
-Output metrics:
-- Original shape: (149632, 14)
-- Cleaned dataset shape: (148392, 14)
-Data pipeline completed successfully.`
+acc = model.score(X_test, y_test)
+print(f"Model Test Accuracy: {acc * 100:.2f}%")`,
+    output: `Training Random Forest Classifier...
+
+Splitting dataset (80% train, 20% test)...
+Model Training Finished.
+========================================
+Model Test Accuracy: 84.62%
+Feature Importance: Tenure (34.2%), Monthly_Charges (28.4%), Contract (22.1%)`
   }
 };
 
 function initTerminalMock() {
   const tabs = document.querySelectorAll('.terminal-tab');
-  const codeEl = document.querySelector('.terminal-code');
-  const outputEl = document.querySelector('.terminal-console');
-  
-  if (!tabs.length || !codeEl || !outputEl) return;
+  const codeElem = document.getElementById('terminalCodeContent');
+  const consoleElem = document.getElementById('terminalConsoleContent');
+  const runBtn = document.getElementById('btnRunTerminalQuery');
 
-  let typingTimer = null;
+  if (!codeElem || !consoleElem) return;
 
-  function typeCode(text, callback) {
-    codeEl.innerHTML = '';
-    let index = 0;
-    
-    // Clear any active typing sequence
-    if (typingTimer) clearInterval(typingTimer);
-
-    // Fast typing simulation
-    typingTimer = setInterval(() => {
-      if (index < text.length) {
-        // Quick basic formatting for syntax highlights
-        let char = text[index];
-        if (char === '<') {
-          // Skip HTML entities
-          const end = text.indexOf('>', index);
-          if (end !== -1) {
-            char = text.substring(index, end + 1);
-            index = end;
-          }
-        }
-        
-        codeEl.innerHTML += char;
-        index++;
-        
-        // Scroll terminal code panel to bottom if overflow
-        codeEl.parentElement.scrollTop = codeEl.parentElement.scrollHeight;
-      } else {
-        clearInterval(typingTimer);
-        typingTimer = null;
-        if (callback) callback();
-      }
-    }, 8); // Fast typing pace
-  }
-
-  function highlightCode(filename) {
-    const rawCode = terminalData[filename].code;
-    let formatted = rawCode
-      // Strings
-      .replace(/(['"])(.*?)\1/g, '<span class="terminal-str">$1$2$1</span>')
-      // Comments
-      .replace(/(#.*|\-\-.*)/g, '<span class="terminal-comment">$1</span>')
-      // SQL keywords
-      .replace(/\b(SELECT|FROM|WHERE|GROUP BY|ORDER BY|AND|OR|AS|ROUND|SUM|COUNT|LIMIT|WHERE)\b/g, '<span class="terminal-kw">$1</span>')
-      // Python imports & flow controls
-      .replace(/\b(import|from|as|for|in|print|def|return|class|if|elif|else|try|except)\b/g, '<span class="terminal-kw">$1</span>')
-      // Custom functions/methods
-      .replace(/(\.\w+|\b\w+)(?=\()/g, '<span class="terminal-fn">$1</span>')
-      // Variables and attributes
-      .replace(/\b(df|img|findings|cv_model|results|det|customer_id|churn_flag|ltv|segment)\b/g, '<span class="terminal-var">$1</span>');
-
-    codeEl.innerHTML = formatted + '<span class="terminal-caret"></span>';
-  }
-
-  function executeTab(tabName) {
-    outputEl.style.opacity = '0.3';
-    outputEl.textContent = 'Awaiting query execution...';
-    
-    const fileData = terminalData[tabName];
-    if (!fileData) return;
-
-    typeCode(fileData.code, () => {
-      // Re-apply standard syntax coloring on completion
-      highlightCode(tabName);
-      
-      // Simulate backend computing wait
-      setTimeout(() => {
-        outputEl.style.opacity = '1';
-        outputEl.textContent = fileData.output;
-      }, 350);
-    });
-  }
+  let currentFile = 'growth_analytics.sql';
+  codeElem.textContent = terminalData[currentFile].code;
 
   tabs.forEach(tab => {
     tab.addEventListener('click', (e) => {
-      const target = e.currentTarget;
-      if (target.classList.contains('active') && typingTimer) return;
-
       tabs.forEach(t => t.classList.remove('active'));
+      const target = e.currentTarget;
       target.classList.add('active');
 
-      const filename = target.getAttribute('data-file');
-      executeTab(filename);
+      currentFile = target.getAttribute('data-file');
+      codeElem.textContent = terminalData[currentFile].code;
+      consoleElem.textContent = "Click 'Run Code' to execute pipeline analysis...";
     });
   });
 
-  // Start with first tab loaded
-  executeTab('retention_query.sql');
+  if (runBtn) {
+    runBtn.addEventListener('click', () => {
+      consoleElem.textContent = "Running script on server...";
+      setTimeout(() => {
+        consoleElem.textContent = terminalData[currentFile].output;
+      }, 400);
+    });
+  }
 }
 
-/* ==========================================
-   5. TIMELINE FILTER TOGGLE (EXPERIENCE / EDUCATION)
-   ========================================== */
+/* ==========================================================================
+   6. LIVE CHART.JS BUSINESS INTELLIGENCE HUB
+   ========================================================================== */
+let chartInstance = null;
+
+const chartDatasets = {
+  revenue: {
+    title: 'Telco Regional Revenue & Growth Analytics',
+    labels: ['Los Angeles', 'San Diego', 'San Jose', 'San Francisco', 'Sacramento', 'Fresno'],
+    type: 'bar',
+    datasets: [{
+      label: 'Total Revenue ($K)',
+      data: [1420, 980, 840, 720, 560, 410],
+      backgroundColor: 'rgba(201, 168, 96, 0.7)',
+      borderColor: '#c9a860',
+      borderWidth: 1.5,
+      borderRadius: 6
+    }],
+    insights: [
+      'Top 10 cities account for over 42% of total cumulative telecom revenue.',
+      'High-risk accounts (Churn Score >= 80) contribute to $145K in monthly revenue risk.',
+      'Fiber Optic internet service yields highest ARPU but requires proactive retention.'
+    ],
+    kpi: { dataset: '7,043 Rows', accuracy: 'Score >= 80', risk: '$482.5K' }
+  },
+  churn: {
+    title: 'Customer Churn Rate by Contract Tenure',
+    labels: ['Month-to-Month', 'One Year', 'Two Year'],
+    type: 'doughnut',
+    datasets: [{
+      label: 'Churn % Rate',
+      data: [42.7, 11.2, 2.8],
+      backgroundColor: ['rgba(239, 68, 68, 0.75)', 'rgba(245, 158, 11, 0.75)', 'rgba(52, 211, 153, 0.75)'],
+      borderColor: ['#ef4444', '#f59e0b', '#34d399'],
+      borderWidth: 2
+    }],
+    insights: [
+      'Month-to-Month contracts represent 78.4% of overall account cancellations.',
+      'Customers with tenure under 12 months show 3.5x higher churn probability.',
+      'Electronic check payment methods show significant correlation with churn.'
+    ],
+    kpi: { dataset: '7,043 Rows', accuracy: '84.6% Accuracy', risk: '$310.2K' }
+  },
+  pcb: {
+    title: 'PCB Defect Category Frequency Distribution',
+    labels: ['Short Circuit', 'Mousebite', 'Missing Hole', 'Open Loop', 'Spur', 'Spurious Copper'],
+    type: 'bar',
+    datasets: [{
+      label: 'Identified Anomalies',
+      data: [142, 98, 86, 64, 45, 32],
+      backgroundColor: 'rgba(6, 182, 212, 0.7)',
+      borderColor: '#06b6d4',
+      borderWidth: 1.5,
+      borderRadius: 6
+    }],
+    insights: [
+      'Short circuits and Mousebites account for 51% of total surface defect flags.',
+      'Open-CV contour template matching achieved 98.4% precision on standard test sets.',
+      'FastAPI async inference pipeline runs at 14.2ms per PCB image frame.'
+    ],
+    kpi: { dataset: '6 Defect Classes', accuracy: '98.4% Precision', risk: '14.2 ms Latency' }
+  }
+};
+
+function initChartJSHub() {
+  const canvas = document.getElementById('liveChartCanvas');
+  const titleElem = document.getElementById('currentChartTitle');
+  const insightsElem = document.getElementById('insightsList');
+  const kpiData = document.getElementById('kpiDataset');
+  const kpiAcc = document.getElementById('kpiAccuracy');
+  const kpiRisk = document.getElementById('kpiRisk');
+  const selectBtns = document.querySelectorAll('.btn-chart-select');
+
+  if (!canvas || typeof Chart === 'undefined') return;
+
+  function renderChart(key) {
+    const config = chartDatasets[key];
+
+    if (chartInstance) chartInstance.destroy();
+
+    titleElem.textContent = config.title;
+    
+    // Update insights
+    insightsElem.innerHTML = config.insights.map(item => `<li><i class="lucide-check-circle"></i> ${item}</li>`).join('');
+    
+    // Update KPI mini cards
+    if (kpiData) kpiData.textContent = config.kpi.dataset;
+    if (kpiAcc) kpiAcc.textContent = config.kpi.accuracy;
+    if (kpiRisk) kpiRisk.textContent = config.kpi.risk;
+
+    chartInstance = new Chart(canvas, {
+      type: config.type,
+      data: {
+        labels: config.labels,
+        datasets: config.datasets
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: config.type === 'doughnut',
+            labels: { color: '#cbd5e1', font: { family: 'Plus Jakarta Sans', size: 12 } }
+          }
+        },
+        scales: config.type !== 'doughnut' ? {
+          x: { ticks: { color: '#64748b', font: { family: 'JetBrains Mono', size: 11 } }, grid: { color: 'rgba(255, 255, 255, 0.05)' } },
+          y: { ticks: { color: '#64748b', font: { family: 'JetBrains Mono', size: 11 } }, grid: { color: 'rgba(255, 255, 255, 0.05)' } }
+        } : {}
+      }
+    });
+  }
+
+  selectBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      selectBtns.forEach(b => b.classList.remove('active'));
+      const target = e.currentTarget;
+      target.classList.add('active');
+      const chartKey = target.getAttribute('data-chart');
+      renderChart(chartKey);
+    });
+  });
+
+  renderChart('revenue');
+}
+
+/* ==========================================================================
+   7. PROJECT CATEGORY FILTERING (ALL, AI / ML ENGINEER, DATA ANALYST)
+   ========================================================================== */
+function initProjectFilters() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  if (!filterBtns.length || !projectCards.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      const target = e.currentTarget;
+      target.classList.add('active');
+
+      const filter = target.getAttribute('data-filter');
+
+      projectCards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(15px)';
+
+        setTimeout(() => {
+          if (filter === 'all' || category === filter) {
+            card.style.display = 'flex';
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, 50);
+          } else {
+            card.style.display = 'none';
+          }
+        }, 200);
+      });
+    });
+  });
+}
+
+/* ==========================================================================
+   8. PCB COMPUTER VISION DEFECT INSPECTION SIMULATOR
+   ========================================================================== */
+const pcbDefects = {
+  short: {
+    name: 'Short Circuit',
+    confidence: '98.4%',
+    coords: '[x: 180, y: 110, w: 90, h: 75]',
+    latency: '14.2 ms',
+    action: 'FLAGGED FOR MANUAL REVIEW',
+    log: '[INFO] Image frame 1920x1080 received.\n[INFO] Contour template alignment done.\n[DETECT] Copper trace bridge found at sector B-4.\n[OUTPUT] Bounding box drawn with confidence 0.984.',
+    bbox: { top: '22%', left: '25%', width: '110px', height: '80px', color: '#ef4444' }
+  },
+  mousebite: {
+    name: 'Mousebite Anomaly',
+    confidence: '95.1%',
+    coords: '[x: 310, y: 200, w: 60, h: 50]',
+    latency: '12.8 ms',
+    action: 'FLAGGED FOR ETCH RE-CHECK',
+    log: '[INFO] Image frame received.\n[INFO] Edge roughness analysis in progress.\n[DETECT] Trace bite erosion found at pad connector C-2.\n[OUTPUT] Confidence score 0.951.',
+    bbox: { top: '50%', left: '55%', width: '85px', height: '65px', color: '#f59e0b' }
+  },
+  hole: {
+    name: 'Missing Hole',
+    confidence: '99.2%',
+    coords: '[x: 420, y: 80, w: 45, h: 45]',
+    latency: '11.5 ms',
+    action: 'REJECTED — MISSING DRILL',
+    log: '[INFO] Drill pad verification routine.\n[DETECT] Missing via hole on layer 1.\n[OUTPUT] Severe defect flag triggered.',
+    bbox: { top: '15%', left: '68%', width: '60px', height: '60px', color: '#ef4444' }
+  },
+  open: {
+    name: 'Open Circuit',
+    confidence: '96.8%',
+    coords: '[x: 120, y: 250, w: 100, h: 40]',
+    latency: '13.9 ms',
+    action: 'FLAGGED FOR RESOLDER',
+    log: '[INFO] Trace continuity scan initialized.\n[DETECT] Line gap break detected on signal line 3.\n[OUTPUT] Open loop flag generated.',
+    bbox: { top: '65%', left: '15%', width: '130px', height: '55px', color: '#a855f7' }
+  },
+  spur: {
+    name: 'Copper Spur',
+    confidence: '92.6%',
+    coords: '[x: 240, y: 160, w: 50, h: 50]',
+    latency: '15.1 ms',
+    action: 'MINOR ANOMALY LOGGED',
+    log: '[INFO] Surface copper protrusion scan.\n[DETECT] Extra copper spur trace identified.\n[OUTPUT] Logged to database.',
+    bbox: { top: '35%', left: '42%', width: '70px', height: '70px', color: '#06b6d4' }
+  }
+};
+
+function initPcbSimulator() {
+  const defectBtns = document.querySelectorAll('.defect-btn');
+  const bbox = document.getElementById('pcbBoundingBox');
+  const label = document.getElementById('bboxLabel');
+  const nameElem = document.getElementById('telDefectName');
+  const confElem = document.getElementById('telConfidence');
+  const coordsElem = document.getElementById('telCoords');
+  const latElem = document.getElementById('telLatency');
+  const actElem = document.getElementById('telAction');
+  const logElem = document.getElementById('logOutput');
+
+  if (!defectBtns.length || !bbox) return;
+
+  defectBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      defectBtns.forEach(b => b.classList.remove('active'));
+      const target = e.currentTarget;
+      target.classList.add('active');
+
+      const defectKey = target.getAttribute('data-defect');
+      const data = pcbDefects[defectKey];
+
+      // Update Bounding Box
+      bbox.style.top = data.bbox.top;
+      bbox.style.left = data.bbox.left;
+      bbox.style.width = data.bbox.width;
+      bbox.style.height = data.bbox.height;
+      bbox.style.borderColor = data.bbox.color;
+      
+      label.textContent = `${data.name}: ${data.confidence}`;
+      label.style.background = data.bbox.color;
+
+      // Update Telemetry Sidebar
+      if (nameElem) nameElem.textContent = data.name;
+      if (confElem) confElem.textContent = data.confidence;
+      if (coordsElem) coordsElem.textContent = data.coords;
+      if (latElem) latElem.textContent = data.latency;
+      if (actElem) actElem.textContent = data.action;
+      if (logElem) logElem.textContent = data.log;
+    });
+  });
+}
+
+/* ==========================================================================
+   9. TIMELINE TOGGLE (EXPERIENCE vs EDUCATION)
+   ========================================================================== */
 function initTimelineToggle() {
-  const btns = document.querySelectorAll('.timeline-btn');
+  const toggleBtns = document.querySelectorAll('.timeline-tab-btn');
   const items = document.querySelectorAll('.timeline-item');
 
-  if (!btns.length || !items.length) return;
+  if (!toggleBtns.length || !items.length) return;
 
-  btns.forEach(btn => {
+  toggleBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
-      const type = e.currentTarget.getAttribute('data-target');
-      
-      // Active Button
-      btns.forEach(b => b.classList.remove('active'));
-      e.currentTarget.classList.add('active');
+      toggleBtns.forEach(b => b.classList.remove('active'));
+      const target = e.currentTarget;
+      target.classList.add('active');
 
-      // Filter timeline list items with animations
+      const type = target.getAttribute('data-target');
+
       items.forEach(item => {
         const itemType = item.getAttribute('data-type');
-        
-        // Hide card first
-        item.style.display = 'none';
-        item.classList.remove('show');
-        
         if (itemType === type) {
-          // Visual delay for layout adjustments
-          setTimeout(() => {
-            item.style.display = 'block';
-            setTimeout(() => {
-              item.classList.add('show');
-            }, 50);
-          }, 100);
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
         }
       });
     });
   });
-
-  // Set initial state
-  const activeBtn = document.querySelector('.timeline-btn.active');
-  if (activeBtn) {
-    const initialType = activeBtn.getAttribute('data-target');
-    items.forEach(item => {
-      const itemType = item.getAttribute('data-type');
-      if (itemType === initialType) {
-        item.style.display = 'block';
-        item.classList.add('show');
-      } else {
-        item.style.display = 'none';
-      }
-    });
-  }
 }
 
-/* ==========================================
-   6. SCROLL REVEAL (INTERSECTION OBSERVER)
-   ========================================== */
+/* ==========================================================================
+   10. COPY CARDS & TOAST NOTIFICATIONS
+   ========================================================================== */
+function showToast(message) {
+  const container = document.getElementById('toast-container');
+  if (!container) return;
+
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.innerHTML = `<i class="lucide-check-circle"></i> <span>${message}</span>`;
+  container.appendChild(toast);
+
+  setTimeout(() => {
+    toast.remove();
+  }, 3000);
+}
+
+function initCopyCards() {
+  const copyCards = document.querySelectorAll('.copyable-card');
+
+  copyCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const textToCopy = card.getAttribute('data-copy');
+      if (textToCopy) {
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          showToast(`Copied "${textToCopy}" to clipboard!`);
+        });
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   11. MODAL WINDOWS (RESUME & PROJECT ARCHITECTURE DETAILS)
+   ========================================================================== */
+const projectModalData = {
+  pcb: {
+    title: 'AI-Powered PCB Defect Detection Architecture',
+    github: 'https://github.com/kanhumishra/Smart-PCB-defect-detection-and-classification',
+    body: `
+      <h4><i class="lucide-cpu"></i> System Overview & Pipeline</h4>
+      <p>This project resolves industrial PCB manufacturing inspection errors by replacing slow manual visual checks with an automated deep-learning computer vision pipeline.</p>
+      
+      <h4 style="margin-top: 1rem;"><i class="lucide-layers"></i> Technical Stack & Modules</h4>
+      <ul>
+        <li><strong>OpenCV & PyTorch:</strong> Image contour extraction, grayscale alignment, and YOLOv5 deep learning model training.</li>
+        <li><strong>6 Defect Classes:</strong> Short Circuit, Mousebite, Missing Hole, Open Circuit, Spur, Spurious Copper.</li>
+        <li><strong>FastAPI Microservice:</strong> Asynchronous REST backend handling image frames and yielding bounding box JSON.</li>
+        <li><strong>Streamlit Dashboard:</strong> User interface displaying real-time inspection feeds, metrics, and anomaly logs.</li>
+      </ul>
+    `
+  },
+  telcogrowth: {
+    title: 'Customer Intelligence & Growth Analytics Architecture',
+    github: 'https://github.com/kanhumishra/Customer-Intelligence-Growth-Analytics',
+    body: `
+      <h4><i class="lucide-bar-chart-2"></i> System Overview & Business Impact</h4>
+      <p>Designed a data analytics engine analyzing customer retention dynamics, top revenue-generating cities, and high-risk churn indicators across telecom accounts.</p>
+      
+      <h4 style="margin-top: 1rem;"><i class="lucide-database"></i> SQL Pipeline & Analytics Workflow</h4>
+      <ul>
+        <li><strong>T-SQL Data Pipeline (telco_customer_clean.sql):</strong> Executed bulk data import, deduplication, NULL handling, and CTE analysis for contract churn rates and top cities.</li>
+        <li><strong>Python Jupyter Notebooks:</strong> Conducted EDA, ARPU calculations, and root-cause correlation analysis (Notebooks 1 through 7).</li>
+        <li><strong>Power BI Dashboard (telco_customer.pbix):</strong> Formulated DAX measures and built interactive slicers isolating high-risk users (Churn_Score >= 80) to preserve monthly revenue.</li>
+      </ul>
+    `
+  },
+  churn: {
+    title: 'Customer Churn Risk Analysis & Power BI Architecture',
+    github: 'https://github.com/kanhumishra',
+    body: `
+      <h4><i class="lucide-line-chart"></i> System Overview & Machine Learning</h4>
+      <p>Built a predictive churn model and executive Power BI report quantifying customer lifetime value (LTV) and cancellation risk factors.</p>
+      
+      <h4 style="margin-top: 1rem;"><i class="lucide-settings"></i> Data Science Methods</h4>
+      <ul>
+        <li><strong>Python Scikit-Learn:</strong> Implemented Random Forest and Logistic Regression models achieving 84.6% accuracy.</li>
+        <li><strong>Power BI DAX:</strong> Modeled dynamic time-intelligence measures and contract risk slicers.</li>
+      </ul>
+    `
+  }
+};
+
+function initModals() {
+  // Resume Modal
+  const resumeModal = document.getElementById('resumeModal');
+  const openResumeBtn = document.getElementById('heroResumeBtn');
+  const openHeaderResumeBtn = document.getElementById('headerResumeModalBtn');
+  const closeResumeBtn = document.getElementById('closeResumeModal');
+  const printResumeBtn = document.getElementById('btnPrintResume');
+
+  function openResume() { if (resumeModal) resumeModal.classList.add('open'); }
+  function closeResume() { if (resumeModal) resumeModal.classList.remove('open'); }
+
+  if (openResumeBtn) openResumeBtn.addEventListener('click', openResume);
+  if (openHeaderResumeBtn) openHeaderResumeBtn.addEventListener('click', openResume);
+  if (closeResumeBtn) closeResumeBtn.addEventListener('click', closeResume);
+
+  if (printResumeBtn) {
+    printResumeBtn.addEventListener('click', () => {
+      window.print();
+    });
+  }
+
+  // Project Modal
+  const projectModal = document.getElementById('projectModal');
+  const openProjectBtns = document.querySelectorAll('.btn-open-modal');
+  const closeProjBtn = document.getElementById('closeProjectModal');
+  const closeProjFooter = document.getElementById('closeProjectModalFooter');
+  const modalTitle = document.getElementById('modalProjectTitle');
+  const modalBody = document.getElementById('modalProjectBody');
+  const modalGithubLink = document.getElementById('modalProjectGithubLink');
+
+  function openProject(key) {
+    const data = projectModalData[key];
+    if (!data) return;
+
+    if (modalTitle) modalTitle.innerHTML = `<i class="lucide-layers"></i> ${data.title}`;
+    if (modalBody) modalBody.innerHTML = data.body;
+    if (modalGithubLink) modalGithubLink.href = data.github;
+
+    if (projectModal) projectModal.classList.add('open');
+  }
+
+  function closeProject() { if (projectModal) projectModal.classList.remove('open'); }
+
+  openProjectBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const key = e.currentTarget.getAttribute('data-project');
+      openProject(key);
+    });
+  });
+
+  if (closeProjBtn) closeProjBtn.addEventListener('click', closeProject);
+  if (closeProjFooter) closeProjFooter.addEventListener('click', closeProject);
+
+  // Close modals on backdrop click
+  window.addEventListener('click', (e) => {
+    if (e.target === resumeModal) closeResume();
+    if (e.target === projectModal) closeProject();
+  });
+}
+
+/* ==========================================================================
+   12. SCROLL REVEAL ANIMATIONS
+   ========================================================================== */
 function initScrollReveal() {
-  const revealElements = document.querySelectorAll('.reveal-on-scroll');
-  if (!revealElements.length) return;
+  const revealElems = document.querySelectorAll('.reveal-on-scroll');
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        // Unobserve to keep element visible and avoid re-triggering
+        entry.target.classList.add('revealed');
         observer.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px' // Trigger slightly before element is in full view
-  });
+  }, { threshold: 0.15 });
 
-  revealElements.forEach(el => observer.observe(el));
+  revealElems.forEach(elem => observer.observe(elem));
 }
 
-/* ==========================================
-   7. INTERACTIVE CONTACT FORM WITH TOAST FEEDBACK
-   ========================================== */
+/* ==========================================================================
+   13. CONTACT FORM HANDLER
+   ========================================================================== */
 function initContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-    
-    // Simulate loading state
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `Sending... <span class="terminal-caret" style="width: 5px; height: 10px;"></span>`;
-
-    const name = document.getElementById('formName').value;
-    const email = document.getElementById('formEmail').value;
-    const msg = document.getElementById('formMessage').value;
-
-    setTimeout(() => {
-      // Reset button
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalText;
-      
-      // Toast notification creation
-      createToast(`Thank you, ${name}! Your message has been sent successfully. Kanhu will reply to ${email} shortly.`);
-      
-      // Reset fields
-      form.reset();
-    }, 1200);
+    showToast('Thank you! Your message has been sent successfully.');
+    form.reset();
   });
-}
-
-function createToast(message) {
-  // Check if a toast container already exists, otherwise create it
-  let container = document.querySelector('.toast-container');
-  if (!container) {
-    container = document.createElement('div');
-    container.className = 'toast-container';
-    // Style toast container dynamically or add to style.css
-    Object.assign(container.style, {
-      position: 'fixed',
-      bottom: '30px',
-      right: '30px',
-      zIndex: '1000',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '10px',
-      maxWidth: '380px'
-    });
-    document.body.appendChild(container);
-  }
-
-  const toast = document.createElement('div');
-  toast.className = 'toast-notification glass-panel';
-  
-  // Style toast card dynamically
-  Object.assign(toast.style, {
-    padding: '1.25rem',
-    background: 'rgba(15, 23, 42, 0.95)',
-    border: '1px solid var(--primary)',
-    boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)',
-    transform: 'translateY(100px)',
-    opacity: '0',
-    transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-    fontFamily: 'var(--font-body)',
-    fontSize: '0.88rem',
-    color: 'var(--text-hi)',
-    borderRadius: 'var(--border-radius-sm)'
-  });
-
-  toast.innerHTML = `
-    <div style="display: flex; align-items: flex-start; gap: 10px;">
-      <span style="color: var(--primary); font-size: 1.1rem; font-weight: bold;">✓</span>
-      <div>${message}</div>
-    </div>
-  `;
-
-  container.appendChild(toast);
-
-  // Trigger animation after appending
-  setTimeout(() => {
-    toast.style.transform = 'translateY(0)';
-    toast.style.opacity = '1';
-  }, 10);
-
-  // Auto-dismiss after 6 seconds
-  setTimeout(() => {
-    toast.style.transform = 'translateY(30px)';
-    toast.style.opacity = '0';
-    setTimeout(() => {
-      toast.remove();
-    }, 400);
-  }, 6000);
 }

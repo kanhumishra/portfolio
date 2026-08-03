@@ -4,72 +4,87 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- SEO Meta Tags -->
-  <title>Kanhu Charan Mishra — Data Analyst &amp; Business Intelligence Developer</title>
-  <meta name="description" content="Portfolio of Kanhu Charan Mishra, Data Analyst and MCA Candidate specializing in SQL, Python, Power BI, computer vision quality control and predictive analysis.">
-  <meta name="keywords" content="Kanhu Charan Mishra, Data Analyst, Business Intelligence, Power BI, SQL, Python, PCB Defect Detection, Fakir Mohan University, Bhubaneswar, Odisha">
+  <!-- SEO & Social Meta Tags -->
+  <title>Kanhu Charan Mishra — Data Analyst &amp; AI Developer Portfolio</title>
+  <meta name="description" content="Portfolio of Kanhu Charan Mishra, Data Analyst &amp; AI Developer specializing in SQL pipelines, Power BI, Python data science, and Computer Vision quality control systems.">
+  <meta name="keywords" content="Kanhu Charan Mishra, Data Analyst, AI Engineer, Business Intelligence, Power BI, SQL, Python, PCB Defect Detection, Customer Growth Analytics, Bhubaneswar, Odisha">
   <meta name="author" content="Kanhu Charan Mishra">
   
-  <!-- Open Graph / Social Sharing -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Kanhu Charan Mishra — Data Analyst Portfolio">
-  <meta property="og:description" content="Turning raw data into decisions that hold up. Browse SQL, Python, and Power BI dashboards built by Kanhu Charan Mishra.">
+  <meta property="og:title" content="Kanhu Charan Mishra — Data Analyst &amp; AI Portfolio">
+  <meta property="og:description" content="Turning complex data into executive intelligence. Explore SQL pipelines, ML models, Power BI dashboards, and Computer Vision solutions.">
   <meta property="og:image" content="https://kanhumishra.github.io/assets/portfolio-preview.jpg">
   
-  <!-- Fonts -->
+  <!-- Modern Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Lucide Icons -->
+  <!-- Lucide Icons CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@0.321.0/font/lucide.min.css">
   
-  <!-- Stylesheets -->
+  <!-- Chart.js CDN for Interactive Data Visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  
+  <!-- Primary Custom Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- Background Layer Grid & Interactive Particle Graph -->
+  <!-- Custom Cursor Glow Follower -->
+  <div id="cursor-glow" class="cursor-glow"></div>
+
+  <!-- Background Interactive Particle Canvas & Orbs -->
   <canvas id="bg-canvas"></canvas>
   <div class="grid-overlay"></div>
   <div class="orb-glow orb-1"></div>
   <div class="orb-glow orb-2"></div>
   <div class="orb-glow orb-3"></div>
 
-  <!-- HEADER -->
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- HEADER & NAVIGATION -->
   <header id="site-header">
     <div class="container header-container">
       <nav aria-label="Main Navigation">
-        <a href="#hero" class="nav-brand" id="navBrand">KANHU CH. MISHRA</a>
+        <a href="#hero" class="nav-brand" id="navBrand">
+          <span class="brand-accent">&lt;</span>KANHU<span class="brand-dot">.</span>MISHRA<span class="brand-accent">/&gt;</span>
+        </a>
         
         <ul class="nav-menu" id="navMenu">
-          <li><a href="#about" class="nav-link"><span>01.</span>Profile</a></li>
-          <li><a href="#timeline" class="nav-link"><span>02.</span>Journey</a></li>
-          <li><a href="#skills" class="nav-link"><span>03.</span>Toolkit</a></li>
-          <li><a href="#projects" class="nav-link"><span>04.</span>Projects</a></li>
-          <li><a href="#achievements" class="nav-link"><span>05.</span>Highlights</a></li>
-          <li><a href="#contact" class="nav-link"><span>06.</span>Contact</a></li>
+          <li><a href="#about" class="nav-link"><span class="nav-num">01.</span>Profile</a></li>
+          <li><a href="#skills" class="nav-link"><span class="nav-num">02.</span>Toolkit</a></li>
+          <li><a href="#analytics-hub" class="nav-link"><span class="nav-num">03.</span>Live BI Hub</a></li>
+          <li><a href="#projects" class="nav-link"><span class="nav-num">04.</span>Projects</a></li>
+          <li><a href="#vision-demo" class="nav-link"><span class="nav-num">05.</span>PCB Vision</a></li>
+          <li><a href="#timeline" class="nav-link"><span class="nav-num">06.</span>Journey</a></li>
+          <li><a href="#contact" class="nav-link"><span class="nav-num">07.</span>Contact</a></li>
         </ul>
 
         <div class="header-actions">
-          <button class="theme-toggle" id="themeToggler" aria-label="Toggle visual theme" title="Switch Theme">
-            <!-- Icon is dynamically loaded via JS -->
+          <button class="theme-toggle" id="themeToggler" aria-label="Toggle visual theme" title="Switch Theme Palette">
             <i class="lucide-moon"></i>
           </button>
+
+          <button class="btn btn-sm btn-outline" id="headerResumeModalBtn">
+            <i class="lucide-file-text"></i> Resume
+          </button>
           
-          <a href="mailto:mishrakaanhu76@gmail.com" class="btn btn-secondary btn-nav-cta" id="headerResumeBtn">
-            Hire
+          <a href="mailto:mishrakaanhu76@gmail.com" class="btn btn-sm btn-primary btn-nav-cta" id="headerHireBtn">
+            Hire Me <i class="lucide-arrow-up-right"></i>
           </a>
 
           <button class="mobile-toggle" id="mobileMenuToggle" aria-expanded="false" aria-label="Toggle navigation menu">
-            &#x2630;
+            <i class="lucide-menu"></i>
           </button>
         </div>
       </nav>
     </div>
   </header>
 
-  <!-- MAIN CONTAINER -->
+  <!-- MAIN CONTENT CONTAINER -->
   <main>
 
     <!-- HERO SECTION -->
@@ -78,46 +93,62 @@
         <div class="hero-grid">
           
           <div class="hero-content">
-            <div class="hero-tagline">
-              <span> Data Analyst,Scientist · MCA Graduate</span>
+            <div class="hero-badge">
+              <span class="pulse-dot"></span>
+              <span>Available for Data Analyst &amp; AI Engineering Roles</span>
             </div>
             
             <h1 class="hero-title-main">
-              Turning raw data into<br>
-              <span>decisions that hold up.</span>
+              Turning Raw Data Into <br>
+              <span class="gradient-text">Executive Business Intelligence.</span>
             </h1>
             
             <p class="hero-desc">
-              I'm Kanhu Charan Mishra — I clean messy datasets, build robust SQL and Python pipelines, and design interactive dashboards that stakeholders use to make confident, data-driven decisions.
+              Hi, I'm <strong>Kanhu Charan Mishra</strong> — a Data Analyst &amp; MCA Candidate. I construct high-performance SQL pipelines, train predictive machine learning models in Python, and engineer interactive Power BI dashboards that turn raw numbers into measurable business growth.
             </p>
             
             <div class="hero-actions">
               <a href="#projects" class="btn btn-primary" id="heroProjectsBtn">
-                Explore Projects <i class="lucide-arrow-right"></i>
+                <i class="lucide-folder-git-2"></i> Explore Projects
               </a>
-              <a href="#contact" class="btn btn-secondary" id="heroContactBtn">
-                Get In Touch
+              <a href="#analytics-hub" class="btn btn-secondary" id="heroExploreBtn">
+                <i class="lucide-bar-chart-2"></i> Live BI Dashboards
               </a>
+              <button class="btn btn-outline" id="heroResumeBtn">
+                <i class="lucide-download"></i> View Resume
+              </button>
             </div>
 
             <div class="hero-stats">
-              <div class="hero-stat-item">
-                <span class="hero-stat-val">7.70<span>CGPA</span></span>
-                <span class="hero-stat-lbl">BCA Academic Record</span>
+              <div class="hero-stat-card glass-card">
+                <div class="stat-icon-wrapper"><i class="lucide-graduation-cap"></i></div>
+                <div>
+                  <span class="hero-stat-val">7.70<span class="stat-unit">/10</span></span>
+                  <span class="hero-stat-lbl">BCA Distinction Record</span>
+                </div>
               </div>
-              <div class="hero-stat-item">
-                <span class="hero-stat-val">6+<span>Classes</span></span>
-                <span class="hero-stat-lbl">PCB Defects Inspected</span>
+
+              <div class="hero-stat-card glass-card">
+                <div class="stat-icon-wrapper"><i class="lucide-scan-eye"></i></div>
+                <div>
+                  <span class="hero-stat-val">6<span class="stat-unit">Classes</span></span>
+                  <span class="hero-stat-lbl">PCB Defect AI Classifier</span>
+                </div>
               </div>
-              <div class="hero-stat-item">
-                <span class="hero-stat-val">2<span>End-to-End</span></span>
-                <span class="hero-stat-lbl">BI Pipelines Shipped</span>
+
+              <div class="hero-stat-card glass-card">
+                <div class="stat-icon-wrapper"><i class="lucide-database"></i></div>
+                <div>
+                  <span class="hero-stat-val">100<span class="stat-unit">%</span></span>
+                  <span class="hero-stat-lbl">End-to-End SQL &amp; BI Pipelines</span>
+                </div>
               </div>
             </div>
           </div>
 
+          <!-- Hero Right Visual: Interactive SQL & Python Terminal Mock -->
           <div class="hero-visual">
-            <div class="terminal-mock">
+            <div class="terminal-mock glass-panel">
               <div class="terminal-header">
                 <div class="terminal-controls">
                   <span class="terminal-dot red"></span>
@@ -125,25 +156,32 @@
                   <span class="terminal-dot green"></span>
                 </div>
                 <div class="terminal-tabs">
-                  <button class="terminal-tab active" data-file="retention_query.sql" aria-label="SQL retention query code">
-                    <i class="lucide-database" style="font-size: 11px;"></i> retention_query.sql
+                  <button class="terminal-tab active" data-file="growth_analytics.sql" id="tabSql">
+                    <i class="lucide-database"></i> growth_query.sql
                   </button>
-                  <button class="terminal-tab" data-file="defect_detection.py" aria-label="Python object detection code">
-                    <i class="lucide-terminal" style="font-size: 11px;"></i> defect_detection.py
+                  <button class="terminal-tab" data-file="pcb_vision.py" id="tabPy">
+                    <i class="lucide-terminal"></i> pcb_vision.py
                   </button>
-                  <button class="terminal-tab" data-file="clean_data.py" aria-label="Python clean data code">
-                    <i class="lucide-binary" style="font-size: 11px;"></i> clean_data.py
+                  <button class="terminal-tab" data-file="churn_eda.py" id="tabModel">
+                    <i class="lucide-binary"></i> churn_eda.py
                   </button>
                 </div>
-                <div class="terminal-lang-indicator" style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">IDE</div>
+                <div class="terminal-badge">LIVE IDE</div>
               </div>
+
               <div class="terminal-body">
-                <div class="code-wrapper" style="border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1.25rem; margin-bottom: 1.25rem; max-height: 180px; overflow-y: auto;">
-                  <pre><code class="terminal-code" id="terminalCodeContent">SELECT customer_id, churn_flag, ltv FROM customer_activity;</code></pre>
+                <div class="code-wrapper">
+                  <pre><code class="terminal-code" id="terminalCodeContent">-- Initializing SQL Pipeline Engine...</code></pre>
                 </div>
+
                 <div class="console-wrapper">
-                  <div style="font-size: 0.72rem; color: var(--text-low); text-transform: uppercase; font-family: var(--font-mono); margin-bottom: 0.4rem;">Console Output</div>
-                  <pre style="color: var(--text-mid); font-size: 0.78rem;" class="terminal-console" id="terminalConsoleContent">Awaiting terminal execution...</pre>
+                  <div class="console-bar">
+                    <span class="console-lbl"><i class="lucide-play"></i> Execution Console</span>
+                    <button class="btn-console-run" id="btnRunTerminalQuery">
+                      <i class="lucide-play"></i> Run Code
+                    </button>
+                  </div>
+                  <pre class="terminal-console" id="terminalConsoleContent">Click 'Run Code' to execute pipeline analysis...</pre>
                 </div>
               </div>
             </div>
@@ -153,61 +191,465 @@
       </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section id="about">
+    <!-- ABOUT / PROFILE SECTION -->
+    <section id="about" class="section">
       <div class="container">
         <div class="section-header reveal-on-scroll">
           <span class="section-num">01 / PROFILE</span>
-          <h2 class="section-title">About <span>Me</span></h2>
-          <p class="section-subtitle">A blend of computer application principles and data intelligence.</p>
+          <h2 class="section-title">Bridging <span class="gradient-text">Computer Applications</span> &amp; Business Intelligence</h2>
+          <p class="section-subtitle">A data analyst grounded in rigorous computer science fundamentals and real-world problem solving.</p>
         </div>
 
         <div class="about-grid">
-          <div class="about-bio reveal-on-scroll delay-100">
+          <div class="about-bio glass-panel reveal-on-scroll">
+            <h3 class="about-heading"><i class="lucide-user-check"></i> Analytical Mindset &amp; Technical Execution</h3>
             <p>
-              I am an <strong>MCA candidate </strong> with a deep passion for unlocking business value from messy, unstructured datasets. My academic foundations and practical application focus sit squarely at the intersection of <strong>Machine Learning, Data Analysis, and Predictive Modeling</strong>.
+              I am an <strong>MCA candidate at Fakir Mohan University</strong> with a solid groundwork in computer applications, databases, and applied algorithms. My focus centers on taking messy, disparate datasets and turning them into scalable data models and actionable visual dashboards.
             </p>
             <p>
-              I specialize in handling the entire lifecycle of data: starting with robust extraction using complex <strong>SQL queries</strong>, going through cleaning and feature engineering in <strong>Python</strong>, and delivering findings via stakeholder-ready <strong>Power BI &amp; Tableau dashboards</strong>.
+              My expertise spans the complete analytics lifecycle: writing complex <strong>SQL CTEs, Joins, and aggregations</strong>, conducting statistical EDA and feature engineering in <strong>Python</strong>, building deep-learning computer vision classifiers, and designing executive-level <strong>Power BI &amp; Tableau dashboards</strong>.
             </p>
-            <p>
-              Whether it's building object detection systems for PCB quality inspections or modeling client behavior indicators to cut retention churn, I enjoy finding technical answers that translate directly into operational success.
-            </p>
+            <div class="about-highlights">
+              <div class="highlight-chip"><i class="lucide-check-circle-2"></i> SQL CTEs &amp; Analytical Queries</div>
+              <div class="highlight-chip"><i class="lucide-check-circle-2"></i> Python Data Wrangling (Pandas/NumPy)</div>
+              <div class="highlight-chip"><i class="lucide-check-circle-2"></i> Power BI DAX &amp; Data Modeling</div>
+              <div class="highlight-chip"><i class="lucide-check-circle-2"></i> OpenCV &amp; YOLO Computer Vision</div>
+            </div>
           </div>
 
-          <div class="about-stats reveal-on-scroll delay-200">
-            <div class="stat-box">
-              <div class="stat-box-val">7.02</div>
-              <div class="stat-box-lbl">Master of Computer Applications CGPA</div>
-            </div>
-            
-            <div class="stat-box">
-              <div class="stat-box-val">7.70</div>
-              <div class="stat-box-lbl">Bachelor of Computer Applications CGPA</div>
+          <div class="about-cards-column reveal-on-scroll delay-100">
+            <div class="about-card glass-panel">
+              <div class="card-icon-header">
+                <i class="lucide-graduation-cap"></i>
+                <div>
+                  <h4>Master of Computer Applications (MCA)</h4>
+                  <span class="card-sub">Fakir Mohan University (2024 — 2026)</span>
+                </div>
+              </div>
+              <p class="card-body-text">Focusing on Advanced Data Mining, DBMS Architecture, Python Data Science, and Machine Learning. Cumulative Grade: <strong>7.02 / 10 CGPA</strong>.</p>
             </div>
 
-            <div class="stat-box">
-              <div class="stat-box-val">India</div>
-              <div class="stat-box-lbl">Based in Bhubaneswar, Odisha</div>
+            <div class="about-card glass-panel">
+              <div class="card-icon-header">
+                <i class="lucide-award"></i>
+                <div>
+                  <h4>Bachelor of Computer Applications (BCA)</h4>
+                  <span class="card-sub">Fakir Mohan University (2021 — 2024)</span>
+                </div>
+              </div>
+              <p class="card-body-text">Core coursework in Data Structures, Object-Oriented Programming, Relational Algebra, SQL Administration, and Statistics. Graduated with <strong>7.70 / 10 CGPA</strong>.</p>
+            </div>
+
+            <div class="about-card glass-panel">
+              <div class="card-icon-header">
+                <i class="lucide-map-pin"></i>
+                <div>
+                  <h4>Location &amp; Mobility</h4>
+                  <span class="card-sub">Bhubaneswar, Odisha, India</span>
+                </div>
+              </div>
+              <p class="card-body-text">Available for full-time Data Analyst, BI Developer, or AI/ML Engineering positions (On-site / Hybrid / Remote).</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- JOURNEY (TIMELINE) SECTION -->
-    <section id="timeline">
+    <!-- TECHNICAL SKILLS & TOOLKIT -->
+    <section id="skills" class="section">
       <div class="container">
         <div class="section-header reveal-on-scroll">
-          <span class="section-num">02 / JOURNEY</span>
-          <h2 class="section-title">Experience &amp; <span>Education</span></h2>
-          <p class="section-subtitle">My practical milestones and academic credentials.</p>
+          <span class="section-num">02 / TOOLKIT</span>
+          <h2 class="section-title">Technical <span class="gradient-text">Skills &amp; Expertise</span></h2>
+          <p class="section-subtitle">Core languages, database systems, visualization suites, and ML frameworks.</p>
+        </div>
+
+        <div class="skills-grid">
+          
+          <div class="skill-card glass-panel reveal-on-scroll">
+            <div class="skill-card-header">
+              <div class="skill-icon"><i class="lucide-code"></i></div>
+              <h3>Languages &amp; Querying</h3>
+            </div>
+            <div class="skills-list">
+              <div class="skill-item">
+                <div class="skill-info"><span>Python (Pandas, NumPy, Scikit-Learn)</span><span class="skill-pct">92%</span></div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 92%;"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>SQL (PostgreSQL, T-SQL, CTEs, Joins)</span><span class="skill-pct">95%</span></div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>DAX &amp; Power Query (M)</span><span class="skill-pct">88%</span></div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-card glass-panel reveal-on-scroll delay-100">
+            <div class="skill-card-header">
+              <div class="skill-icon"><i class="lucide-bar-chart-3"></i></div>
+              <h3>Business Intelligence &amp; Viz</h3>
+            </div>
+            <div class="skills-list">
+              <div class="skill-item">
+                <div class="skill-info"><span>Microsoft Power BI</span><span class="skill-pct">94%</span></div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 94%;"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>Tableau Software</span><span class="skill-pct">85%</span></div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>Advanced Excel (VLOOKUP, Pivot, Formulas)</span><span class="skill-pct">90%</span></div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-card glass-panel reveal-on-scroll delay-200">
+            <div class="skill-card-header">
+              <div class="skill-icon"><i class="lucide-brain"></i></div>
+              <h3>AI, Machine Learning &amp; CV</h3>
+            </div>
+            <div class="skills-list">
+              <div class="skill-item">
+                <div class="skill-info"><span>OpenCV &amp; PyTorch (YOLOv5)</span><span class="skill-pct">88%</span></div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>Exploratory Data Analysis (EDA)</span><span class="skill-pct">95%</span></div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>Predictive Modeling &amp; Classification</span><span class="skill-pct">88%</span></div>
+                <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Badges Grid -->
+        <div class="skill-badges-grid reveal-on-scroll">
+          <span class="badge-pill"><i class="lucide-check"></i> CTEs &amp; Window Functions</span>
+          <span class="badge-pill"><i class="lucide-check"></i> Bulk Data Importing</span>
+          <span class="badge-pill"><i class="lucide-check"></i> Data Cleaning &amp; Imputation</span>
+          <span class="badge-pill"><i class="lucide-check"></i> Feature Engineering</span>
+          <span class="badge-pill"><i class="lucide-check"></i> Customer Churn Analytics</span>
+          <span class="badge-pill"><i class="lucide-check"></i> Revenue Root Cause Analysis</span>
+          <span class="badge-pill"><i class="lucide-check"></i> FastAPI Microservices</span>
+          <span class="badge-pill"><i class="lucide-check"></i> Streamlit Reporting Apps</span>
+          <span class="badge-pill"><i class="lucide-check"></i> Git &amp; GitHub Version Control</span>
+          <span class="badge-pill"><i class="lucide-check"></i> KPI Architecture</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LIVE INTERACTIVE ANALYTICS HUB (CHART.JS INTEGRATION) -->
+    <section id="analytics-hub" class="section bg-surface-alt">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-num">03 / INTERACTIVE DEMO</span>
+          <h2 class="section-title">Live <span class="gradient-text">Business Intelligence Hub</span></h2>
+          <p class="section-subtitle">Interact with real-time dynamic chart data models built for Customer Intelligence, Churn Analysis, and Quality Control.</p>
+        </div>
+
+        <div class="analytics-hub-container glass-panel reveal-on-scroll">
+          <div class="analytics-controls-bar">
+            <div class="dashboard-title-info">
+              <i class="lucide-layout-dashboard"></i>
+              <div>
+                <h3 id="currentChartTitle">Telco Revenue &amp; Regional Growth Analytics</h3>
+                <span class="dashboard-subtitle">Simulated BI Dataset Engine — Live Data Viz</span>
+              </div>
+            </div>
+
+            <div class="chart-selector-buttons">
+              <button class="btn-chart-select active" data-chart="revenue" id="btnChartRevenue">
+                <i class="lucide-dollar-sign"></i> Telco Regional Revenue
+              </button>
+              <button class="btn-chart-select" data-chart="churn" id="btnChartChurn">
+                <i class="lucide-user-minus"></i> Customer Churn Analysis
+              </button>
+              <button class="btn-chart-select" data-chart="pcb" id="btnChartPcb">
+                <i class="lucide-cpu"></i> PCB Defect Frequencies
+              </button>
+            </div>
+          </div>
+
+          <div class="analytics-dashboard-grid">
+            <div class="chart-visual-box">
+              <canvas id="liveChartCanvas"></canvas>
+            </div>
+
+            <div class="chart-insights-box">
+              <h4><i class="lucide-sparkles"></i> Analytics Key Insights</h4>
+              <ul class="insights-list" id="insightsList">
+                <li><i class="lucide-check-circle"></i> Top 10 cities account for over 42% of total cumulative revenue.</li>
+                <li><i class="lucide-check-circle"></i> High-risk accounts (Churn Score &gt;= 80) contribute to $145K in potential monthly revenue leakage.</li>
+                <li><i class="lucide-check-circle"></i> Fiber Optic internet service generates highest ARPU but shows elevated churn propensity.</li>
+              </ul>
+
+              <div class="dashboard-kpi-row">
+                <div class="kpi-mini-card">
+                  <span class="kpi-lbl">Total Dataset Size</span>
+                  <span class="kpi-val" id="kpiDataset">7,043 Rows</span>
+                </div>
+                <div class="kpi-mini-card">
+                  <span class="kpi-lbl">High-Risk Flag</span>
+                  <span class="kpi-val highlight" id="kpiAccuracy">Score &gt;= 80</span>
+                </div>
+                <div class="kpi-mini-card">
+                  <span class="kpi-lbl">Identified Risk LTV</span>
+                  <span class="kpi-val" id="kpiRisk">$482.5K</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS SHOWCASE (CATEGORIZED SEPARATELY) -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-num">04 / SELECTED WORKS</span>
+          <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+          <p class="section-subtitle">Categorized portfolio showcasing AI Engineering and Data Analyst solutions.</p>
+        </div>
+
+        <!-- CATEGORY FILTER BAR: ALL, AI / ML ENGINEER, DATA ANALYST -->
+        <div class="projects-filter-bar reveal-on-scroll">
+          <button class="filter-btn active" data-filter="all" id="btnFilterAll">
+            <i class="lucide-grid"></i> All Projects
+          </button>
+          <button class="filter-btn" data-filter="ai" id="btnFilterAi">
+            <i class="lucide-cpu"></i> AI / ML Engineer Projects
+          </button>
+          <button class="filter-btn" data-filter="data-analyst" id="btnFilterDataAnalyst">
+            <i class="lucide-bar-chart-2"></i> Data Analyst Projects
+          </button>
+        </div>
+
+        <div class="projects-grid">
+          
+          <!-- PROJECT 1: AI / ML ENGINEER -->
+          <div class="project-card glass-panel reveal-on-scroll" data-category="ai" id="projPCB">
+            <div class="project-card-badge">
+              <span class="tag tag-ai"><i class="lucide-cpu"></i> AI / ML Engineer</span>
+              <span class="project-date">2025 — 2026</span>
+            </div>
+
+            <h3 class="project-title">AI-Powered PCB Defect Detection &amp; Classification</h3>
+            <div class="project-stack-pills">
+              <span class="stack-pill">Python</span>
+              <span class="stack-pill">OpenCV</span>
+              <span class="stack-pill">PyTorch / YOLOv5</span>
+              <span class="stack-pill">FastAPI</span>
+              <span class="stack-pill">Streamlit</span>
+            </div>
+
+            <p class="project-summary">
+              Engineered an end-to-end deep learning computer vision pipeline detecting six unique PCB manufacturing defect classes (Shorts, Opens, Mouse bites, Missing holes, Spurs, and Spurious Copper).
+            </p>
+
+            <ul class="project-features">
+              <li><i class="lucide-chevron-right"></i> Trained custom YOLOv5 and template-matching models for high-accuracy PCB surface inspection.</li>
+              <li><i class="lucide-chevron-right"></i> Built an asynchronous FastAPI REST server to handle real-time image inspection API requests.</li>
+              <li><i class="lucide-chevron-right"></i> Developed an interactive Streamlit UI displaying confidence scores, anomaly bounding boxes, and inspection logs.</li>
+            </ul>
+
+            <div class="project-card-footer">
+              <button class="btn btn-sm btn-outline btn-open-modal" data-project="pcb">
+                <i class="lucide-layers"></i> Architecture Details
+              </button>
+              <a href="https://github.com/kanhumishra/Smart-PCB-defect-detection-and-classification" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                GitHub Repo <i class="lucide-external-link"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- PROJECT 2: DATA ANALYST (NEW ADDITION FROM D:\Customer-Intelligence-Growth-Analytics) -->
+          <div class="project-card glass-panel reveal-on-scroll delay-100" data-category="data-analyst" id="projTelcoGrowth">
+            <div class="project-card-badge">
+              <span class="tag tag-analyst"><i class="lucide-bar-chart-2"></i> Data Analyst</span>
+              <span class="project-date">2025 — 2026</span>
+            </div>
+
+            <h3 class="project-title">Customer Intelligence &amp; Growth Analytics</h3>
+            <div class="project-stack-pills">
+              <span class="stack-pill">SQL (T-SQL)</span>
+              <span class="stack-pill">Microsoft Power BI</span>
+              <span class="stack-pill">Power Query &amp; DAX</span>
+              <span class="stack-pill">Python (Pandas)</span>
+              <span class="stack-pill">Jupyter</span>
+            </div>
+
+            <p class="project-summary">
+              Developed a comprehensive telecom data analysis engine quantifying customer retention dynamics, top revenue-generating cities, contract-type churn correlations, and high-risk account segments.
+            </p>
+
+            <ul class="project-features">
+              <li><i class="lucide-chevron-right"></i> Engineered robust T-SQL scripts (`telco_customer_clean.sql`) for bulk data loading, deduplication, NULL handling, and CTE analysis.</li>
+              <li><i class="lucide-chevron-right"></i> Conducted Python notebook analyses (`03_customer_analysis`, `4_revenue_analysis`, `7_Correlation_Root_Cause`).</li>
+              <li><i class="lucide-chevron-right"></i> Built interactive Power BI dashboard (`telco_customer.pbix`) isolating high-risk users (`Churn_Score &gt;= 80`) to prevent revenue loss.</li>
+            </ul>
+
+            <div class="project-card-footer">
+              <button class="btn btn-sm btn-outline btn-open-modal" data-project="telcogrowth">
+                <i class="lucide-layers"></i> Architecture Details
+              </button>
+              <a href="https://github.com/kanhumishra/Customer-Intelligence-Growth-Analytics" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                GitHub Repo <i class="lucide-external-link"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- PROJECT 3: DATA ANALYST -->
+          <div class="project-card glass-panel reveal-on-scroll delay-200" data-category="data-analyst" id="projChurn">
+            <div class="project-card-badge">
+              <span class="tag tag-analyst"><i class="lucide-line-chart"></i> Data Analyst</span>
+              <span class="project-date">2025</span>
+            </div>
+
+            <h3 class="project-title">Customer Churn Risk Analysis &amp; Power BI Dashboard</h3>
+            <div class="project-stack-pills">
+              <span class="stack-pill">Python</span>
+              <span class="stack-pill">Pandas</span>
+              <span class="stack-pill">Scikit-Learn</span>
+              <span class="stack-pill">Power BI</span>
+              <span class="stack-pill">SQL</span>
+            </div>
+
+            <p class="project-summary">
+              Executed exploratory data analysis and trained predictive churn classifier models on customer usage logs to pinpoint retention drivers and calculate lifetime value metrics.
+            </p>
+
+            <ul class="project-features">
+              <li><i class="lucide-chevron-right"></i> Conducted rigorous statistical EDA, outlier treatment, and missing-value imputation in Python.</li>
+              <li><i class="lucide-chevron-right"></i> Built classification ML models with Scikit-Learn delivering 84%+ accuracy scores.</li>
+              <li><i class="lucide-chevron-right"></i> Formulated DAX time-intelligence metrics and built an executive Power BI report with interactive demographic slicers.</li>
+            </ul>
+
+            <div class="project-card-footer">
+              <button class="btn btn-sm btn-outline btn-open-modal" data-project="churn">
+                <i class="lucide-layers"></i> Architecture Details
+              </button>
+              <a href="https://github.com/kanhumishra" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                GitHub Repo <i class="lucide-external-link"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE COMPUTER VISION DEMO SECTION -->
+    <section id="vision-demo" class="section bg-surface-alt">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-num">05 / LIVE DEMO</span>
+          <h2 class="section-title">Interactive <span class="gradient-text">PCB Defect Detector</span></h2>
+          <p class="section-subtitle">Simulate real-time computer vision quality control inspection on a printed circuit board.</p>
+        </div>
+
+        <div class="pcb-simulator-container glass-panel reveal-on-scroll">
+          <div class="pcb-sim-header">
+            <div class="sim-title">
+              <i class="lucide-scan"></i>
+              <div>
+                <h3>YOLOv5 Defect Detection Engine</h3>
+                <span class="sim-subtitle">Select a defect class below to inspect simulated bounding box inference output.</span>
+              </div>
+            </div>
+
+            <div class="pcb-defect-selector">
+              <button class="defect-btn active" data-defect="short"><i class="lucide-zap"></i> Short Circuit</button>
+              <button class="defect-btn" data-defect="mousebite"><i class="lucide-scissors"></i> Mousebite</button>
+              <button class="defect-btn" data-defect="hole"><i class="lucide-circle-dot"></i> Missing Hole</button>
+              <button class="defect-btn" data-defect="open"><i class="lucide-minus-circle"></i> Open Circuit</button>
+              <button class="defect-btn" data-defect="spur"><i class="lucide-corner-down-right"></i> Spur</button>
+            </div>
+          </div>
+
+          <div class="pcb-sim-body">
+            <div class="pcb-canvas-wrapper" id="pcbCanvasWrapper">
+              <!-- Visual Simulated PCB Circuit Board -->
+              <div class="pcb-circuit-board">
+                <div class="circuit-line line-1"></div>
+                <div class="circuit-line line-2"></div>
+                <div class="circuit-line line-3"></div>
+                <div class="chip-element chip-main">CPU</div>
+                <div class="chip-element chip-sub">RAM</div>
+                <div class="solder-pad pad-1"></div>
+                <div class="solder-pad pad-2"></div>
+                <div class="solder-pad pad-3"></div>
+
+                <!-- Bounding Box Canvas Overlay -->
+                <div class="pcb-bounding-box" id="pcbBoundingBox">
+                  <span class="bbox-label" id="bboxLabel">Short Circuit: 98.4%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pcb-inspection-sidebar">
+              <h4><i class="lucide-activity"></i> Inspection Telemetry</h4>
+              
+              <div class="telemetry-item">
+                <span class="tel-lbl">Selected Anomaly:</span>
+                <span class="tel-val" id="telDefectName">Short Circuit</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="tel-lbl">Confidence Score:</span>
+                <span class="tel-val highlight" id="telConfidence">98.4%</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="tel-lbl">Bounding Coordinates:</span>
+                <span class="tel-val mono" id="telCoords">[x: 180, y: 110, w: 90, h: 75]</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="tel-lbl">Inference Latency:</span>
+                <span class="tel-val" id="telLatency">14.2 ms</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="tel-lbl">Quality Action:</span>
+                <span class="tel-val warning" id="telAction">FLAGGED FOR MANUAL REVIEW</span>
+              </div>
+
+              <div class="log-stream-box">
+                <span class="log-title">Live Log Output:</span>
+                <pre class="log-output" id="logOutput">
+[INFO] Image frame 1920x1080 received.
+[INFO] Preprocessing: Gray-scale & contour alignment done.
+[DETECT] Anomaly found at sector B-4.
+[OUTPUT] Bounding box drawn with confidence 0.984.</pre>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE & EDUCATION TIMELINE -->
+    <section id="timeline" class="section">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-num">06 / JOURNEY</span>
+          <h2 class="section-title">Academic &amp; <span class="gradient-text">Project Milestones</span></h2>
+          <p class="section-subtitle">A chronological record of hands-on technical achievements and academic excellence.</p>
         </div>
 
         <div class="timeline-toggle-wrapper reveal-on-scroll">
           <div class="timeline-toggle-btn">
-            <button class="timeline-btn active" data-target="experience" id="btnTimelineExp">Applied Work</button>
-            <button class="timeline-btn" data-target="education" id="btnTimelineEdu">Academic Background</button>
+            <button class="timeline-tab-btn active" data-target="experience" id="btnTimelineExp">Applied Experience</button>
+            <button class="timeline-tab-btn" data-target="education" id="btnTimelineEdu">Academic Education</button>
           </div>
         </div>
 
@@ -216,263 +658,58 @@
           
           <!-- Experience Items -->
           <div class="timeline-item reveal-on-scroll" data-type="experience">
-            <span class="timeline-dot-indicator"><span class="timeline-dot-inner"></span></span>
-            <div class="timeline-date">2025 — 2026</div>
-            <h3 class="timeline-title">Computer Vision &amp; Analytics Developer</h3>
-            <div class="timeline-institution">AI-Powered PCB Defect Detection System <span>· Project Experience</span></div>
-            <ul class="timeline-details">
-              <li>Engineered a deep-learning quality control tool capable of identifying six custom defect classes on printed circuit boards.</li>
-              <li>Implemented computer vision pipelines in OpenCV, extracting contours, checking alignment, and optimizing template match matrices.</li>
-              <li>Developed a Python FastAPI backend integrated with a interactive Streamlit analytical reporting dashboard.</li>
-              <li>Streamlined automated quality control cycles, improving defect identification speed and logging anomalies to a local database.</li>
-            </ul>
+            <div class="timeline-marker"><div class="marker-dot"></div></div>
+            <div class="timeline-content glass-panel">
+              <span class="timeline-date">2025 — 2026</span>
+              <h3 class="timeline-role">Computer Vision &amp; Analytics Developer</h3>
+              <div class="timeline-org">AI PCB Quality Control System <span>· Lead Developer</span></div>
+              <ul class="timeline-bullets">
+                <li>Architected deep-learning computer vision system classifying 6 distinct PCB surface defect types.</li>
+                <li>Leveraged OpenCV, PyTorch, YOLOv5 algorithms, FastAPI endpoints, and Streamlit user interface.</li>
+                <li>Improved anomaly logging speed and reduced inspection error margins in trial tests.</li>
+              </ul>
+            </div>
           </div>
 
-          <div class="timeline-item reveal-on-scroll" data-type="experience">
-            <span class="timeline-dot-indicator"><span class="timeline-dot-inner"></span></span>
-            <div class="timeline-date">2025</div>
-            <h3 class="timeline-title">Data Analyst</h3>
-            <div class="timeline-institution">Customer Churn Analysis <span>· Project Experience</span></div>
-            <ul class="timeline-details">
-              <li>Spearheaded exploratory data analysis (EDA) on client behavior logs to find triggers indicating account cancellations.</li>
-              <li>Conducted robust data wrangling, missing-value imputation, outlier removal, and correlation analysis using Pandas and NumPy.</li>
-              <li>Built predictive classification models using Scikit-Learn to evaluate customer churn likelihood scores.</li>
-              <li>Published an interactive Power BI dashboard featuring KPI metrics, behavioral matrices, and demographic filter segmentation.</li>
-            </ul>
+          <div class="timeline-item reveal-on-scroll delay-100" data-type="experience">
+            <div class="timeline-marker"><div class="marker-dot"></div></div>
+            <div class="timeline-content glass-panel">
+              <span class="timeline-date">2025 — 2026</span>
+              <h3 class="timeline-role">Data Analyst &amp; BI Developer</h3>
+              <div class="timeline-org">Customer Intelligence &amp; Growth Analytics <span>· Project Lead</span></div>
+              <ul class="timeline-bullets">
+                <li>Formulated SQL cleaning, bulk data load pipelines, and CTE analytical queries (`telco_customer_clean.sql`).</li>
+                <li>Conducted Python EDA and root-cause analysis isolating high-risk accounts (`Churn_Score &gt;= 80`).</li>
+                <li>Designed executive Power BI report displaying revenue breakdown by internet service and top cities.</li>
+              </ul>
+            </div>
           </div>
 
           <!-- Education Items -->
           <div class="timeline-item reveal-on-scroll" data-type="education">
-            <span class="timeline-dot-indicator"><span class="timeline-dot-inner"></span></span>
-            <div class="timeline-date">2024 — 2026 (Expected)</div>
-            <h3 class="timeline-title">Master of Computer Applications (MCA)</h3>
-            <div class="timeline-institution">Fakir Mohan University <span>· Balasore, Odisha, India</span></div>
-            <ul class="timeline-details">
-              <li>Current Cumulative Grade Point Average (CGPA): <strong>7.02 / 10</strong></li>
-              <li>Specialized modules in Advanced Data Mining, Relational Database Management, Data Structures, and Python.</li>
-            </ul>
-          </div>
-
-          <div class="timeline-item reveal-on-scroll" data-type="education">
-            <span class="timeline-dot-indicator"><span class="timeline-dot-inner"></span></span>
-            <div class="timeline-date">2021 — 2024</div>
-            <h3 class="timeline-title">Bachelor of Computer Applications (BCA)</h3>
-            <div class="timeline-institution">Fakir Mohan University <span>· Balasore, Odisha, India</span></div>
-            <ul class="timeline-details">
-              <li>Graduation Cumulative Grade Point Average (CGPA): <strong>7.70 / 10</strong></li>
-              <li>Foundational modules in C/C++, Java, Relational Algebra, SQL Administration, Object-Oriented Analysis, and Statistics.</li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS SECTION -->
-    <section id="skills">
-      <div class="container">
-        <div class="section-header reveal-on-scroll">
-          <span class="section-num">03 / TOOLKIT</span>
-          <h2 class="section-title">Technical <span>Skills</span></h2>
-          <p class="section-subtitle">My core stack of database languages, analytics software, and frameworks.</p>
-        </div>
-
-        <div class="skills-grid">
-          
-          <div class="skill-category glass-panel reveal-on-scroll">
-            <div class="skill-header">
-              <i class="lucide-terminal"></i>
-              <h3>Programming Languages</h3>
-            </div>
-            <div class="skills-pills">
-              <div class="skill-pill"><span class="skill-dot"></span> Python</div>
-              <div class="skill-pill"><span class="skill-dot"></span> SQL (ANSI / Dialects)</div>
+            <div class="timeline-marker"><div class="marker-dot"></div></div>
+            <div class="timeline-content glass-panel">
+              <span class="timeline-date">2024 — 2026 (Expected)</span>
+              <h3 class="timeline-role">Master of Computer Applications (MCA)</h3>
+              <div class="timeline-org">Fakir Mohan University <span>· Balasore, Odisha, India</span></div>
+              <ul class="timeline-bullets">
+                <li>Current Cumulative Grade Point Average: <strong>7.02 / 10 CGPA</strong></li>
+                <li>Advanced modules in Data Mining, DBMS &amp; SQL Administration, Machine Learning, and Software Engineering.</li>
+              </ul>
             </div>
           </div>
 
-          <div class="skill-category glass-panel reveal-on-scroll delay-100">
-            <div class="skill-header">
-              <i class="lucide-bar-chart-2"></i>
-              <h3>Data Analysis Methods</h3>
+          <div class="timeline-item reveal-on-scroll delay-100" data-type="education">
+            <div class="timeline-marker"><div class="marker-dot"></div></div>
+            <div class="timeline-content glass-panel">
+              <span class="timeline-date">2021 — 2024</span>
+              <h3 class="timeline-role">Bachelor of Computer Applications (BCA)</h3>
+              <div class="timeline-org">Fakir Mohan University <span>· Balasore, Odisha, India</span></div>
+              <ul class="timeline-bullets">
+                <li>Graduated with Distinction: <strong>7.70 / 10 CGPA</strong></li>
+                <li>Foundational focus in Relational Database Systems, Programming in C++/Java, Data Structures, and Statistics.</li>
+              </ul>
             </div>
-            <div class="skills-pills">
-              <div class="skill-pill"><span class="skill-dot"></span> Data Cleaning</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Data Wrangling</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Exploratory Analysis (EDA)</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Statistical Testing</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Data Modeling</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Feature Engineering</div>
-            </div>
-          </div>
-
-          <div class="skill-category glass-panel reveal-on-scroll delay-200">
-            <div class="skill-header">
-              <i class="lucide-layout-dashboard"></i>
-              <h3>Business Intelligence</h3>
-            </div>
-            <div class="skills-pills">
-              <div class="skill-pill"><span class="skill-dot"></span> Microsoft Power BI</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Tableau Software</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Dashboard Architecture</div>
-              <div class="skill-pill"><span class="skill-dot"></span> KPI Reporting</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Custom Visualizations</div>
-            </div>
-          </div>
-
-          <div class="skill-category glass-panel reveal-on-scroll">
-            <div class="skill-header">
-              <i class="lucide-database"></i>
-              <h3>Relational SQL Mechanics</h3>
-            </div>
-            <div class="skills-pills">
-              <div class="skill-pill"><span class="skill-dot"></span> Inner &amp; Outer Joins</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Subqueries &amp; Co-relations</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Common Table Expressions (CTEs)</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Window Analytical Functions</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Groups &amp; Aggregations</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Query Performance Tuning</div>
-            </div>
-          </div>
-
-          <div class="skill-category glass-panel reveal-on-scroll delay-100">
-            <div class="skill-header">
-              <i class="lucide-settings"></i>
-              <h3>Databases &amp; Environments</h3>
-            </div>
-            <div class="skills-pills">
-              <div class="skill-pill"><span class="skill-dot"></span> MySQL Server</div>
-              <div class="skill-pill"><span class="skill-dot"></span> PostgreSQL</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Advanced MS Excel</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Power Query / M</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Jupyter Notebooks</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Git / GitHub Versioning</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Visual Studio Code</div>
-            </div>
-          </div>
-
-          <div class="skill-category glass-panel reveal-on-scroll delay-200">
-            <div class="skill-header">
-              <i class="lucide-cpu"></i>
-              <h3>Machine Learning</h3>
-            </div>
-            <div class="skills-pills">
-              <div class="skill-pill"><span class="skill-dot"></span> Linear &amp; Logistic Regression</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Classification Models</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Clustering Algorithms</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Predictive Analytics</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Hyperparameter Validation</div>
-              <div class="skill-pill"><span class="skill-dot"></span> Scikit-Learn Library</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS SECTION -->
-    <section id="projects">
-      <div class="container">
-        <div class="section-header reveal-on-scroll">
-          <span class="section-num">04 / SELECTED WORKS</span>
-          <h2 class="section-title">Featured <span>Projects</span></h2>
-          <p class="section-subtitle">Real-world applications of machine learning, analytics, and business intelligence.</p>
-        </div>
-
-        <div class="projects-filter-bar reveal-on-scroll">
-          <button class="filter-btn active" data-filter="all" id="btnFilterAll">All Categories</button>
-          <button class="filter-btn" data-filter="computer-vision" id="btnFilterCV">Computer Vision</button>
-          <button class="filter-btn" data-filter="business-intelligence" id="btnFilterBI">BI &amp; Analytics</button>
-        </div>
-
-        <div class="projects-grid">
-          
-          <!-- Project 1 -->
-          <div class="project-card glass-panel reveal-on-scroll" data-category="computer-vision" id="projPCB">
-            <div class="project-meta">
-              <span class="tag tag-primary"><i class="lucide-eye"></i> Computer Vision</span>
-              <div class="project-links-icons">
-                <a href="https://github.com/kanhumishra" target="_blank" rel="noopener" aria-label="View source code on GitHub" title="View Source Code" class="btn-icon">
-                  <i class="lucide-github"></i>
-                </a>
-              </div>
-            </div>
-            <h3 class="project-title">AI-Powered PCB Defect Detection System</h3>
-            <div class="project-stack">Python · OpenCV · PyTorch (YOLOv5) · FastAPI · Streamlit</div>
-            <ul class="project-description">
-              <li>Designed and trained a deep learning computer vision model to identify six unique PCB manufacturing defect classes.</li>
-              <li>Configured image preprocessing parameters to perform template matching, alignment correction, and edge contour calculations.</li>
-              <li>Built a FastAPI background engine to handle asynchronous video/image inference request structures.</li>
-              <li>Launched an interactive Streamlit UI reporting dashboard showcasing detection rates, anomalies, and confidence score distribution charts.</li>
-            </ul>
-            <div class="project-links">
-              <a href="https://github.com/kanhumishra/Smart-PCB-defect-detection-and-classification" target="_blank" rel="noopener" class="btn btn-secondary">
-                GitHub Repository <i class="lucide-external-link"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Project 2 -->
-          <div class="project-card glass-panel reveal-on-scroll delay-100" data-category="business-intelligence" id="projChurn">
-            <div class="project-meta">
-              <span class="tag tag-primary"><i class="lucide-bar-chart-3"></i> BI &amp; Analytics</span>
-              <div class="project-links-icons">
-                <a href="https://github.com/kanhumishra" target="_blank" rel="noopener" aria-label="View source code on GitHub" title="View Source Code" class="btn-icon">
-                  <i class="lucide-github"></i>
-                </a>
-              </div>
-            </div>
-            <h3 class="project-title">Customer Churn Analysis &amp; Dashboard</h3>
-            <div class="project-stack">Python · Pandas · Scikit-Learn · Microsoft Power BI</div>
-            <ul class="project-description">
-              <li>Processed user activation databases to structure historical churn retention patterns.</li>
-              <li>Identified critical KPIs, such as lifetime value (LTV), customer acquisition cost (CAC), usage frequencies, and correlation metrics.</li>
-              <li>Applied Scikit-Learn algorithms to build predictive classifier systems measuring user churn probabilities.</li>
-              <li>Engineered custom relational structures in Power BI, enabling multi-segment dashboard views filtering on demography, activity levels, and risk indicators.</li>
-            </ul>
-            <div class="project-links">
-              <a href="https://github.com/kanhumishra" target="_blank" rel="noopener" class="btn btn-secondary">
-                GitHub Repository <i class="lucide-external-link"></i>
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ACHIEVEMENTS SECTION -->
-    <section id="achievements">
-      <div class="container">
-        <div class="section-header reveal-on-scroll">
-          <span class="section-num">05 / HIGHLIGHTS</span>
-          <h2 class="section-title">Key <span>Achievements</span></h2>
-          <p class="section-subtitle">Visual summaries of my project and educational milestones.</p>
-        </div>
-
-        <div class="achievements-grid">
-          
-          <div class="ach-card glass-panel reveal-on-scroll">
-            <div class="ach-icon-box">
-              <i class="lucide-target"></i>
-            </div>
-            <h3 class="ach-title">6-Class Defect Engine</h3>
-            <p class="ach-desc">Successfully designed and deployed an end-to-end computer vision pipeline detecting six distinct PCB defects with high classification scores.</p>
-          </div>
-
-          <div class="ach-card glass-panel reveal-on-scroll delay-100">
-            <div class="ach-icon-box">
-              <i class="lucide-trending-up"></i>
-            </div>
-            <h3 class="ach-title">Full Analytics Delivery</h3>
-            <p class="ach-desc">Managed the customer churn pipeline from initial database deduplication through statistical engineering up to stakeholder dashboard reporting.</p>
-          </div>
-
-          <div class="ach-card glass-panel reveal-on-scroll delay-200">
-            <div class="ach-icon-box">
-              <i class="lucide-graduation-cap"></i>
-            </div>
-            <h3 class="ach-title">Consistent Academic Record</h3>
-            <p class="ach-desc">Achieved and maintained strong CGPAs across BCA (7.70) and MCA (7.02) at Fakir Mohan University while pursuing hands-on project work.</p>
           </div>
 
         </div>
@@ -480,87 +717,92 @@
     </section>
 
     <!-- CONTACT SECTION -->
-    <section id="contact">
+    <section id="contact" class="section">
       <div class="container">
         <div class="section-header reveal-on-scroll">
-          <span class="section-num">06 / CONTACT</span>
-          <h2 class="section-title">Let's <span>Talk Data</span></h2>
-          <p class="section-subtitle">I'm open to Data Analyst, Business Intelligence, or analytics internships and roles.</p>
+          <span class="section-num">07 / CONTACT</span>
+          <h2 class="section-title">Let's Connect &amp; <span class="gradient-text">Build Together</span></h2>
+          <p class="section-subtitle">Open for Data Analyst, AI / ML Engineering, or Business Intelligence roles.</p>
         </div>
 
         <div class="contact-grid">
           
-          <div class="contact-info-list reveal-on-scroll">
-            <a href="mailto:mishrakaanhu76@gmail.com" class="contact-card" id="contactEmailCard">
-              <div class="contact-card-icon">
-                <i class="lucide-mail"></i>
-              </div>
+          <div class="contact-cards-column reveal-on-scroll">
+            <div class="contact-card glass-panel copyable-card" data-copy="mishrakaanhu76@gmail.com" id="cardCopyEmail">
+              <div class="contact-card-icon"><i class="lucide-mail"></i></div>
               <div class="contact-card-details">
-                <span class="contact-card-lbl">Email</span>
+                <span class="contact-card-label">Email Address</span>
                 <span class="contact-card-val">mishrakaanhu76@gmail.com</span>
               </div>
-            </a>
+              <span class="copy-hint"><i class="lucide-copy"></i> Click to copy</span>
+            </div>
 
-            <a href="tel:+917848817963" class="contact-card" id="contactPhoneCard">
-              <div class="contact-card-icon">
-                <i class="lucide-phone"></i>
-              </div>
+            <div class="contact-card glass-panel copyable-card" data-copy="+917848817963" id="cardCopyPhone">
+              <div class="contact-card-icon"><i class="lucide-phone"></i></div>
               <div class="contact-card-details">
-                <span class="contact-card-lbl">Phone</span>
+                <span class="contact-card-label">Phone / WhatsApp</span>
                 <span class="contact-card-val">+91 7848817963</span>
               </div>
-            </a>
+              <span class="copy-hint"><i class="lucide-copy"></i> Click to copy</span>
+            </div>
 
-            <a href="https://linkedin.com/in/kanhu2002" target="_blank" rel="noopener" class="contact-card" id="contactLinkedinCard">
-              <div class="contact-card-icon">
-                <i class="lucide-linkedin"></i>
-              </div>
+            <a href="https://linkedin.com/in/kanhu2002" target="_blank" rel="noopener" class="contact-card glass-panel" id="cardLinkedin">
+              <div class="contact-card-icon"><i class="lucide-linkedin"></i></div>
               <div class="contact-card-details">
-                <span class="contact-card-lbl">LinkedIn</span>
+                <span class="contact-card-label">LinkedIn Profile</span>
                 <span class="contact-card-val">linkedin.com/in/kanhu2002</span>
               </div>
+              <span class="external-link-icon"><i class="lucide-arrow-up-right"></i></span>
             </a>
 
-            <a href="https://github.com/kanhumishra" target="_blank" rel="noopener" class="contact-card" id="contactGithubCard">
-              <div class="contact-card-icon">
-                <i class="lucide-github"></i>
-              </div>
+            <a href="https://github.com/kanhumishra" target="_blank" rel="noopener" class="contact-card glass-panel" id="cardGithub">
+              <div class="contact-card-icon"><i class="lucide-github"></i></div>
               <div class="contact-card-details">
-                <span class="contact-card-lbl">GitHub</span>
+                <span class="contact-card-label">GitHub Repositories</span>
                 <span class="contact-card-val">github.com/kanhumishra</span>
               </div>
+              <span class="external-link-icon"><i class="lucide-arrow-up-right"></i></span>
             </a>
 
-            <div class="contact-card" style="cursor: default;" id="contactLocationCard">
-              <div class="contact-card-icon">
-                <i class="lucide-map-pin"></i>
-              </div>
+            <div class="contact-card glass-panel" style="cursor: default;" id="cardLocation">
+              <div class="contact-card-icon"><i class="lucide-map-pin"></i></div>
               <div class="contact-card-details">
-                <span class="contact-card-lbl">Location</span>
+                <span class="contact-card-label">Current Location</span>
                 <span class="contact-card-val">Bhubaneswar, Odisha, India</span>
               </div>
             </div>
           </div>
 
           <div class="contact-form-panel glass-panel reveal-on-scroll delay-100">
-            <h3 class="contact-form-title">Send a Message</h3>
-            <p class="contact-form-desc">I usually reply within 24 hours. Submit your details below to start a conversation.</p>
+            <h3 class="form-panel-title"><i class="lucide-send"></i> Send Me a Message</h3>
+            <p class="form-panel-desc">Have a position or project in mind? Drop your details below and I'll get back to you promptly.</p>
             
             <form id="contactForm">
               <div class="form-group">
                 <label for="formName" class="form-label">Full Name</label>
-                <input type="text" id="formName" class="form-input" placeholder="Your Name" required>
+                <input type="text" id="formName" class="form-input" placeholder="e.g. Sarah Jenkins" required>
               </div>
+
               <div class="form-group">
                 <label for="formEmail" class="form-label">Email Address</label>
                 <input type="email" id="formEmail" class="form-input" placeholder="name@company.com" required>
               </div>
+
               <div class="form-group">
-                <label for="formMessage" class="form-label">Message Content</label>
-                <textarea id="formMessage" class="form-input" placeholder="Describe the role or project details..." required></textarea>
+                <label for="formSubject" class="form-label">Subject / Inquiry Type</label>
+                <select id="formSubject" class="form-input">
+                  <option value="Job Opportunity">Data Analyst / AI Role Opportunity</option>
+                  <option value="Project Collaboration">Analytics Project Collaboration</option>
+                  <option value="General Inquiry">General Question</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="formMessage" class="form-label">Message Details</label>
+                <textarea id="formMessage" class="form-input" rows="4" placeholder="Share role specifics or project requirements..." required></textarea>
               </div>
               
-              <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;" id="formSubmitBtn">
+              <button type="submit" class="btn btn-primary btn-submit-full" id="formSubmitBtn">
                 Send Message <i class="lucide-send"></i>
               </button>
             </form>
@@ -574,50 +816,118 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="container">
-      <div class="credit">Designed &amp; Developed for <span>Kanhu Charan Mishra</span></div>
-      <div style="font-size: 0.72rem; color: var(--text-low);">© 2026 Bhubaneswar, Odisha. All rights reserved.</div>
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <span class="brand-accent">&lt;</span>KANHU<span class="brand-dot">.</span>MISHRA<span class="brand-accent">/&gt;</span>
+        <p>Data Analyst &amp; AI Engineer</p>
+      </div>
+
+      <div class="footer-nav">
+        <a href="#hero">Top</a>
+        <a href="#about">Profile</a>
+        <a href="#skills">Skills</a>
+        <a href="#analytics-hub">BI Hub</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-copy">
+        © 2026 Kanhu Charan Mishra. Crafted with precision for high-impact analytics.
+      </div>
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="js/app.js"></script>
-  
-  <!-- Add filter categories action to the page -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const projCards = document.querySelectorAll('.project-card');
+  <!-- RESUME MODAL -->
+  <div id="resumeModal" class="modal-backdrop">
+    <div class="modal-content glass-panel">
+      <div class="modal-header">
+        <h3><i class="lucide-file-text"></i> Curriculum Vitae — Kanhu Charan Mishra</h3>
+        <button class="modal-close-btn" id="closeResumeModal">&times;</button>
+      </div>
 
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          // Set active state on button
-          filterBtns.forEach(b => b.classList.remove('active'));
-          e.currentTarget.classList.add('active');
+      <div class="modal-body resume-modal-body">
+        <div class="resume-header-info">
+          <h2>Kanhu Charan Mishra</h2>
+          <p class="resume-subtitle">Data Analyst | AI Engineer | MCA Candidate</p>
+          <div class="resume-contact-row">
+            <span><i class="lucide-mail"></i> mishrakaanhu76@gmail.com</span>
+            <span><i class="lucide-phone"></i> +91 7848817963</span>
+            <span><i class="lucide-map-pin"></i> Bhubaneswar, Odisha</span>
+            <span><i class="lucide-linkedin"></i> linkedin.com/in/kanhu2002</span>
+          </div>
+        </div>
 
-          const category = e.currentTarget.getAttribute('data-filter');
+        <div class="resume-section">
+          <h4><i class="lucide-user"></i> Professional Summary</h4>
+          <p>Analytical Master of Computer Applications (MCA) student with expertise in SQL query optimization, Python data processing, machine learning classification, computer vision, and Power BI dashboard development. Proven track record building end-to-end analytics pipelines for customer growth intelligence and computer vision defect classification.</p>
+        </div>
 
-          // Filter projects
-          projCards.forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(15px)';
-            
-            setTimeout(() => {
-              const cardCat = card.getAttribute('data-category');
-              if (category === 'all' || cardCat === category) {
-                card.style.display = 'flex';
-                setTimeout(() => {
-                  card.style.opacity = '1';
-                  card.style.transform = 'translateY(0)';
-                }, 50);
-              } else {
-                card.style.display = 'none';
-              }
-            }, 300);
-          });
-        });
-      });
-    });
-  </script>
+        <div class="resume-section">
+          <h4><i class="lucide-wrench"></i> Core Competencies &amp; Technical Skills</h4>
+          <div class="resume-skills-grid">
+            <div><strong>Languages:</strong> Python (Pandas, NumPy, Scikit-Learn, OpenCV), SQL (T-SQL, PostgreSQL, MySQL), DAX, Power Query (M)</div>
+            <div><strong>BI &amp; Analytics:</strong> Microsoft Power BI, Tableau, Advanced Excel (Pivot Tables, VLOOKUP, Formulas)</div>
+            <div><strong>Data Engineering &amp; AI:</strong> Bulk Import, CTEs, Window Functions, EDA, Feature Engineering, YOLOv5</div>
+            <div><strong>Developer Tools:</strong> Git/GitHub, FastAPI, Streamlit, Jupyter Notebooks, VS Code</div>
+          </div>
+        </div>
+
+        <div class="resume-section">
+          <h4><i class="lucide-folder-git-2"></i> Featured Technical Projects</h4>
+          <div class="resume-project-item">
+            <div class="r-proj-title">AI-Powered PCB Defect Detection System (AI / ML Engineer)</div>
+            <p>Trained a deep learning computer vision model recognizing 6 unique PCB manufacturing defect classes. Integrated FastAPI server and Streamlit dashboard reporting anomaly locations and confidence percentages.</p>
+          </div>
+          <div class="resume-project-item">
+            <div class="r-proj-title">Customer Intelligence &amp; Growth Analytics (Data Analyst)</div>
+            <p>Formulated SQL cleaning, bulk load scripts, and CTE queries on telecom dataset. Conducted Python root cause EDA and built an interactive Power BI report (`telco_customer.pbix`) identifying high-risk churn users (`Churn_Score &gt;= 80`).</p>
+          </div>
+          <div class="resume-project-item">
+            <div class="r-proj-title">Customer Churn Analysis &amp; Power BI Dashboard (Data Analyst)</div>
+            <p>Executed statistical EDA and trained Random Forest/Logistic Regression churn classifiers (84%+ accuracy). Formulated DAX metrics and published an interactive Power BI stakeholder dashboard.</p>
+          </div>
+        </div>
+
+        <div class="resume-section">
+          <h4><i class="lucide-graduation-cap"></i> Academic Qualifications</h4>
+          <p><strong>Master of Computer Applications (MCA)</strong> — Fakir Mohan University (2024–2026) | CGPA: 7.02 / 10</p>
+          <p><strong>Bachelor of Computer Applications (BCA)</strong> — Fakir Mohan University (2021–2024) | CGPA: 7.70 / 10</p>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <a href="mailto:mishrakaanhu76@gmail.com?subject=Resume%20Request" class="btn btn-primary">
+          <i class="lucide-mail"></i> Request Full PDF Resume
+        </a>
+        <button class="btn btn-secondary" id="btnPrintResume">
+          <i class="lucide-printer"></i> Print / Save Summary
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT DETAIL MODAL -->
+  <div id="projectModal" class="modal-backdrop">
+    <div class="modal-content glass-panel">
+      <div class="modal-header">
+        <h3 id="modalProjectTitle"><i class="lucide-layers"></i> Project Architecture Details</h3>
+        <button class="modal-close-btn" id="closeProjectModal">&times;</button>
+      </div>
+
+      <div class="modal-body" id="modalProjectBody">
+        <!-- Dynamic content filled via JS -->
+      </div>
+
+      <div class="modal-footer">
+        <a href="https://github.com/kanhumishra" target="_blank" rel="noopener" class="btn btn-primary" id="modalProjectGithubLink">
+          View on GitHub <i class="lucide-external-link"></i>
+        </a>
+        <button class="btn btn-secondary" id="closeProjectModalFooter">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>
