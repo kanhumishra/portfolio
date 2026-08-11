@@ -670,6 +670,9 @@ const projectModalData = {
     title: 'AI-Powered PCB Defect Detection Architecture',
     github: 'https://github.com/kanhumishra/Smart-PCB-defect-detection-and-classification',
     body: `
+      <div class="modal-project-img">
+        <img src="image/Smart-PCB-defect-detection-and-classification.png" alt="Smart PCB Defect Detection and Classification">
+      </div>
       <h4><i class="lucide-cpu"></i> System Overview & Pipeline</h4>
       <p>This project resolves industrial PCB manufacturing inspection errors by replacing slow manual visual checks with an automated deep-learning computer vision pipeline.</p>
       
@@ -686,6 +689,9 @@ const projectModalData = {
     title: 'Customer Intelligence & Growth Analytics Architecture',
     github: 'https://github.com/kanhumishra/Customer-Intelligence-Growth-Analytics',
     body: `
+      <div class="modal-project-img">
+        <img src="image/Customer-Intelligence-Growth-Analytics.png" alt="Customer Intelligence & Growth Analytics">
+      </div>
       <h4><i class="lucide-bar-chart-2"></i> System Overview & Business Impact</h4>
       <p>Designed a data analytics engine analyzing customer retention dynamics, top revenue-generating cities, and high-risk churn indicators across telecom accounts.</p>
       
@@ -701,6 +707,9 @@ const projectModalData = {
     title: 'Enterprise Supply Chain & Logistics Intelligence Architecture',
     github: 'https://github.com/kanhumishra/Enterprise-Supply-Chain-Logistics-Intelligence',
     body: `
+      <div class="modal-project-img">
+        <img src="image/Enterprise-Supply-Chain-Logistics-Intelligence.png" alt="Enterprise Supply Chain & Logistics Intelligence">
+      </div>
       <h4><i class="lucide-truck"></i> System Overview & Business Objective</h4>
       <p>Constructed an enterprise analytical platform inspecting global supply chain order fulfillment, net profit margins across geographic regions, customer segment behaviors, and top product revenue drivers.</p>
       
