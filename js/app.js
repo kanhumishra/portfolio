@@ -696,6 +696,21 @@ const projectModalData = {
         <li><strong>Power BI Dashboard (telco_customer.pbix):</strong> Formulated DAX measures and built interactive slicers isolating high-risk users (Churn_Score >= 80) to preserve monthly revenue.</li>
       </ul>
     `
+  },
+  supplychain: {
+    title: 'Enterprise Supply Chain & Logistics Intelligence Architecture',
+    github: 'https://github.com/kanhumishra/Enterprise-Supply-Chain-Logistics-Intelligence',
+    body: `
+      <h4><i class="lucide-truck"></i> System Overview & Business Objective</h4>
+      <p>Constructed an enterprise analytical platform inspecting global supply chain order fulfillment, net profit margins across geographic regions, customer segment behaviors, and top product revenue drivers.</p>
+      
+      <h4 style="margin-top: 1rem;"><i class="lucide-database"></i> Analytics Pipeline & SQL Modeling</h4>
+      <ul>
+        <li><strong>Relational SQL Query Suite:</strong> Authored modular T-SQL scripts (Market Performance, Customer Segment Analysis, Sales by Department & Category, and Top 10 Product performance) computing profit margin percentages and grouped aggregations.</li>
+        <li><strong>Python Data Preparation & EDA:</strong> Utilized Pandas and NumPy for automated data cleaning (Notebook 01) and multi-variate exploratory data analysis (Notebook 02).</li>
+        <li><strong>Power BI Dashboard (Supply_chain.pbix):</strong> Modeled DAX KPIs and interactive dashboards highlighting high-margin product lines, market revenue distributions, and department sales trends.</li>
+      </ul>
+    `
   }
 };
 
